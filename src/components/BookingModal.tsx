@@ -1,0 +1,277 @@
+import React, { useState } from "react";
+import { X, Calendar, Clock, Sparkles, Check, Phone, Mail, User, Building } from "lucide-react";
+import { LeadSubmission } from "../types";
+
+interface BookingModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onAddLead: (lead: Omit<LeadSubmission, "id" | "submittedAt" | "status">) => void;
+  initialUnitType?: string | null;
+}
+
+export default function BookingModal({
+  isOpen,
+  onClose,
+  onAddLead,
+  initialUnitType,
+}: BookingModalProps) {
+  if (!isOpen) return null;
+
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    preferredDate: "",
+    preferredTime: "11:00",
+    unitType: initialUnitType || "Premium 2 BHK",
+    notes: "",
+  });
+
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    setTimeout(() => {
+      onAddLead({
+        fullName: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        preferredDate: formData.preferredDate || undefined,
+        preferredTime: formData.preferredTime || undefined,
+        source: "site_visit_form",
+        notes: `Unit Choice: ${formData.unitType}. Customer Note: ${formData.notes}`,
+      });
+      setLoading(false);
+      setSubmitted(true);
+    }, 1000);
+  };
+
+  return (
+    <div className="fixed inset-0 bg-navy-dark/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
+      <div className="bg-white rounded-xl shadow-2xl max-w-lg w-full overflow-hidden relative border border-navy-primary/10">
+        <div className="absolute top-0 left-0 w-full h-[5px] bg-gold" />
+        
+        {/* Header bar */}
+        <div className="bg-navy-primary p-6 text-white flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-white/10 rounded-lg">
+              <Calendar className="h-5 w-5 text-gold" />
+            </div>
+            <div>
+              <h3 className="font-display text-lg font-bold tracking-tight">
+                Schedule Site Walkthrough
+              </h3>
+              <p className="text-[10px] text-champagne uppercase tracking-widest font-bold">
+                Private Viewing & Portfolio Orientation
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-1.5 rounded-full bg-white/5 hover:bg-white/15 transition-all text-white/80 hover:text-white"
+          >
+            <X className="h-5 w-5" />
+          </button>
+        </div>
+
+        {/* Content/Form Area */}
+        <div className="p-6 sm:p-8">
+          {!submitted ? (
+            <form onSubmit={handleSubmit} className="space-y-5">
+              
+              {/* Full Name */}
+              <div className="relative border-b border-gray-100 focus-within:border-navy-primary py-1">
+                <label className="text-[9px] font-extrabold text-navy-primary uppercase tracking-wider block mb-1">
+                  Your Full Name
+                </label>
+                <div className="flex items-center gap-2.5">
+                  <User className="h-4 w-4 text-gray-400" />
+                  <input
+                    type="text"
+                    id="fullName"
+                    required
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    placeholder="e.g. Rahul Goyal"
+                    className="w-full bg-transparent border-none text-xs sm:text-sm font-body outline-none placeholder:text-gray-300 py-1"
+                  />
+                </div>
+              </div>
+
+              {/* Email Address */}
+              <div className="relative border-b border-gray-100 focus-within:border-navy-primary py-1">
+                <label className="text-[9px] font-extrabold text-navy-primary uppercase tracking-wider block mb-1">
+                  Email Address
+                </label>
+                <div className="flex items-center gap-2.5">
+                  <Mail className="h-4 w-4 text-gray-400" />
+                  <input
+                    type="email"
+                    id="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="e.g. rahul@example.com"
+                    className="w-full bg-transparent border-none text-xs sm:text-sm font-body outline-none placeholder:text-gray-300 py-1"
+                  />
+                </div>
+              </div>
+
+              {/* Phone Number */}
+              <div className="relative border-b border-gray-100 focus-within:border-navy-primary py-1">
+                <label className="text-[9px] font-extrabold text-navy-primary uppercase tracking-wider block mb-1">
+                  Active Phone Number
+                </label>
+                <div className="flex items-center gap-2.5">
+                  <Phone className="h-4 w-4 text-gray-400" />
+                  <input
+                    type="tel"
+                    id="phone"
+                    required
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="e.g. +91 98765 43210"
+                    className="w-full bg-transparent border-none text-xs sm:text-sm font-body outline-none placeholder:text-gray-300 py-1"
+                  />
+                </div>
+              </div>
+
+              {/* Scheduling grid */}
+              <div className="grid grid-cols-2 gap-4">
+                {/* Preferred Date */}
+                <div>
+                  <label className="text-[9px] font-extrabold text-navy-primary uppercase tracking-wider block mb-1">
+                    Preferred Date
+                  </label>
+                  <input
+                    type="date"
+                    id="preferredDate"
+                    required
+                    min={new Date().toISOString().split("T")[0]}
+                    value={formData.preferredDate}
+                    onChange={handleChange}
+                    className="w-full bg-gray-50 border border-gray-200 text-xs sm:text-sm font-body px-3 py-2 rounded outline-none focus:border-navy-primary"
+                  />
+                </div>
+
+                {/* Preferred Time */}
+                <div>
+                  <label className="text-[9px] font-extrabold text-navy-primary uppercase tracking-wider block mb-1">
+                    Preferred Time Slot
+                  </label>
+                  <select
+                    id="preferredTime"
+                    value={formData.preferredTime}
+                    onChange={handleChange}
+                    className="w-full bg-gray-50 border border-gray-200 text-xs sm:text-sm font-body px-3 py-2 rounded outline-none focus:border-navy-primary"
+                  >
+                    <option value="10:00">10:00 AM - 12:00 PM</option>
+                    <option value="12:00">12:00 PM - 02:00 PM</option>
+                    <option value="14:00">02:00 PM - 04:00 PM</option>
+                    <option value="16:00">04:00 PM - 06:00 PM</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Layout Configuration choice */}
+              <div>
+                <label className="text-[9px] font-extrabold text-navy-primary uppercase tracking-wider block mb-1">
+                  Apartment Configuration Interest
+                </label>
+                <div className="flex gap-3">
+                  {[
+                    { id: "Premium 2 BHK", label: "2 BHK Layout" },
+                    { id: "Luxury 3 BHK", label: "3 BHK Layout" },
+                  ].map((option) => (
+                    <button
+                      key={option.id}
+                      type="button"
+                      onClick={() => setFormData(prev => ({ ...prev, unitType: option.id }))}
+                      className={`flex-1 py-2 px-3 rounded border text-xs font-bold font-body transition-all duration-300 flex items-center justify-center gap-1.5 ${
+                        formData.unitType === option.id
+                          ? "bg-navy-primary text-white border-navy-primary shadow-sm"
+                          : "bg-white text-gray-text border-gray-200 hover:border-navy-primary"
+                      }`}
+                    >
+                      <Building className="h-3.5 w-3.5" />
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Custom message */}
+              <div>
+                <label className="text-[9px] font-extrabold text-navy-primary uppercase tracking-wider block mb-1">
+                  Any Specific Inquiry Requests (Optional)
+                </label>
+                <textarea
+                  id="notes"
+                  rows={2}
+                  value={formData.notes}
+                  onChange={handleChange}
+                  placeholder="e.g. Prefer top-floor unit, request high-resolution elevation blueprints..."
+                  className="w-full bg-gray-50 border border-gray-200 rounded p-2 text-xs font-body outline-none focus:border-navy-primary resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-navy-primary hover:bg-navy-light text-white font-body text-xs font-bold tracking-widest uppercase py-4 rounded transition-all flex items-center justify-center gap-2 cursor-pointer shadow hover:shadow-lg disabled:opacity-50"
+              >
+                {loading ? (
+                  <>
+                    <span className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    REGISTERING SLOT...
+                  </>
+                ) : (
+                  "CONFIRM VISIT SCHEDULE"
+                )}
+              </button>
+            </form>
+          ) : (
+            <div className="text-center py-6 space-y-5 animate-fade-in">
+              <div className="h-12 w-12 bg-green-50 border border-green-200 rounded-full flex items-center justify-center mx-auto text-green-600 shadow-sm">
+                <Check className="h-6 w-6" />
+              </div>
+              
+              <div>
+                <h4 className="font-display text-xl font-bold text-navy-primary">
+                  Walkthrough Confirmed
+                </h4>
+                <p className="font-body text-xs text-gray-text mt-1.5 max-w-sm mx-auto">
+                  Thank you, <strong>{formData.fullName}</strong>. A dedicated Relationship Director is assigned to guide your tour on <strong>{formData.preferredDate}</strong>.
+                </p>
+              </div>
+
+              <div className="p-4 bg-navy-primary/5 rounded border border-navy-primary/10 max-w-xs mx-auto text-xs font-body space-y-1">
+                <span className="text-[9px] font-extrabold text-navy-primary uppercase tracking-widest block">
+                  Reserved Walkthrough Pass
+                </span>
+                <span className="font-display text-base font-bold text-navy-primary block">
+                  Symphony-Heights-{Math.floor(100 + Math.random() * 900)}
+                </span>
+              </div>
+
+              <button
+                onClick={onClose}
+                className="bg-navy-primary hover:bg-navy-light text-white font-body text-xs font-bold tracking-widest uppercase px-6 py-3 rounded shadow"
+              >
+                Return to Site
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
