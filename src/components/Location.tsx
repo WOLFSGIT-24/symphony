@@ -154,39 +154,12 @@ export default function Location() {
             </div>
           </div>
 
-          {/* Map Display Panel */}
-          <div className="lg:col-span-7 h-[500px] sm:h-[600px] rounded-xl shadow-2xl overflow-hidden bg-navy-dark relative border border-navy-primary/10">
-            <div
-              className="w-full h-full bg-cover bg-center"
-              style={{
-                backgroundImage:
-                  "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCyKRmFs1u2iE1tFlOumWprMVqxFBq7-lPuDMEbjPDOa7oF1jXiWnmCePIZaDoZAiAL1es2HuYKlZvqiV_Lh1gDSHS65JI6296C7JIg4-afuf6Ybe8hKaquzvO5bvM7FCnA7Q8_pjdOXdvFYry6UilEJALsk0yREVSTdqn48INyy_xM4kW42N9xL8Em7pc6guzhw1LH_Xj5vIgaMKdFWXHRjhGGTXLKoLYTOEK5CSijPtKNxL_RRgTy-w')",
-              }}
+          <div className="lg:col-span-7 rounded-xl shadow-2xl overflow-hidden relative border border-navy-primary/10 flex items-center justify-center bg-[#F4EDE5] p-6 sm:p-10 lg:p-12">
+            <img 
+              src="/map.png"
+              alt="Location Map"
+              className="w-full max-w-lg lg:max-w-xl h-auto object-contain drop-shadow-sm"
             />
-            {/* Graphic Map Overlay Info */}
-            <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-4 rounded-lg shadow-xl border border-navy-primary/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <div className="flex gap-3 items-center">
-                <div className="h-9 w-9 rounded-full bg-bronze flex items-center justify-center text-white shrink-0">
-                  <MapPin className="h-4.5 w-4.5" />
-                </div>
-                <div>
-                  <span className="font-body text-xs font-bold uppercase tracking-wider text-navy-primary">
-                    Exact Enclave Coordinate
-                  </span>
-                  <span className="block font-body text-xs text-gray-text -mt-0.5">
-                    {projectSnapshot.locationName}
-                  </span>
-                </div>
-              </div>
-              <a
-                href="https://maps.google.com/?q=Hennur+Road+Bangalore"
-                target="_blank"
-                rel="noreferrer"
-                className="bg-navy-primary text-white hover:bg-navy-light text-[10px] font-bold tracking-wider uppercase px-4 py-2.5 rounded shrink-0 shadow-sm"
-              >
-                OPEN MAP
-              </a>
-            </div>
           </div>
 
         </div>
