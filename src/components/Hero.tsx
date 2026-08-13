@@ -21,23 +21,25 @@ export default function Hero({ onOpenEnquiry }: HeroProps) {
         />
         {/* Soft, professional gradient layer */}
         <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/45 via-navy-primary/20 to-navy-dark/65" />
+        {/* Mobile-only dark overlay for text readability */}
+        <div className="absolute inset-0 bg-navy-dark/25 sm:hidden" />
       </div>
 
       {/* Hero Central Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-12 py-20 flex flex-col items-center text-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-12 py-12 sm:py-20 flex flex-col items-center text-center">
         {/* Editorial Eyebrow */}
-        <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm animate-fade-in">
+        <div className="inline-flex items-center gap-2 mb-4 sm:mb-6 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm animate-fade-in">
           <span className="h-1.5 w-1.5 rounded-full bg-gold animate-ping" />
-          <span className="font-body text-[10px] md:text-xs font-bold tracking-[0.25em] text-champagne uppercase">
+          <span className="font-body text-[9px] sm:text-[10px] md:text-xs font-bold tracking-[0.25em] text-champagne uppercase">
             A Boutique Collection of 128 Residences
           </span>
         </div>
 
         {/* Elegant Display Title & Subheadline */}
-        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl text-white font-bold tracking-tight leading-[1.1] max-w-4xl mb-6 animate-slide-up">
+        <h1 className="font-display text-3xl sm:text-5xl md:text-6xl text-white font-bold tracking-tight leading-[1.15] max-w-4xl mb-4 sm:mb-6 animate-slide-up">
           Your First Premium Home Should Never Be a Compromise.
         </h1>
-        <p className="font-body text-sm md:text-base text-champagne/90 max-w-2xl mb-8 animate-fade-in leading-relaxed text-center">
+        <p className="font-body text-[13px] sm:text-sm md:text-base text-white/95 font-medium drop-shadow-md max-w-2xl mb-6 sm:mb-8 animate-fade-in leading-relaxed text-center">
           Introducing Symphony Heights by Disha Properties—a boutique community of just 128 premium 3 BHK residences in the heart of Hennur. Designed for the perfect balance of connectivity, lifestyle, and long-term value.
         </p>
 
