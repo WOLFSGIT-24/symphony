@@ -50,6 +50,8 @@ export default function IntimateScale() {
               <a 
                 href="/Brochure.pdf"
                 download="Symphony-Heights-Floor-Plans.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-navy-primary text-white hover:bg-navy-light text-xs font-bold tracking-widest uppercase px-6 py-4 rounded shadow-sm transition-colors inline-block"
               >
                 Download Floor Plans
