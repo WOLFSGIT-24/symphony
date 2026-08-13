@@ -58,7 +58,7 @@ export default function Header({ onOpenBooking, onToggleAdmin, isAdminActive }: 
         className={`fixed top-0 left-0 w-full h-20 z-40 transition-all duration-300 ${
           isScrolled
             ? "bg-marble/95 backdrop-blur-md border-b border-navy-primary/10 shadow-[0_4px_30px_rgba(0,0,0,0.03)]"
-            : "bg-transparent text-white"
+            : "bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto h-full px-6 md:px-12 flex items-center justify-between">
@@ -72,8 +72,7 @@ export default function Header({ onOpenBooking, onToggleAdmin, isAdminActive }: 
               src="/logo.png"
               alt="Symphony Heights logo"
               referrerPolicy="no-referrer"
-              className="h-36 md:h-40 py-1 w-auto object-contain brightness-0 group-hover:scale-105 transition-transform duration-300"
-              style={{ filter: isScrolled ? "none" : "brightness(0) invert(1)" }}
+              className="h-36 md:h-40 py-1 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
             />
           </a>
 
@@ -90,23 +89,18 @@ export default function Header({ onOpenBooking, onToggleAdmin, isAdminActive }: 
                 href={`#${link.id}`}
                 onClick={(e) => handleLinkClick(e, link.id)}
                 className={`font-body text-xs font-semibold tracking-wider transition-all duration-300 relative py-2 ${
-                  isScrolled
-                    ? activeSection === link.id
-                      ? "text-navy-primary"
-                      : "text-gray-text hover:text-navy-primary"
-                    : activeSection === link.id
-                    ? "text-gold"
-                    : "text-white/80 hover:text-white"
+                  activeSection === link.id
+                    ? "text-navy-primary"
+                    : "text-navy-primary/60 hover:text-navy-primary"
                 }`}
               >
                 {link.label}
-                {activeSection === link.id && (
-                  <span
-                    className={`absolute bottom-0 left-0 w-full h-[2px] animate-fade-in ${
-                      isScrolled ? "bg-navy-primary" : "bg-gold"
-                    }`}
-                  />
-                )}
+                {/* Active Indicator line */}
+                <span
+                  className={`absolute bottom-0 left-0 h-[2px] bg-gold transition-all duration-300 ${
+                    activeSection === link.id ? "w-full" : "w-0"
+                  }`}
+                />
               </a>
             ))}
           </nav>
@@ -115,11 +109,7 @@ export default function Header({ onOpenBooking, onToggleAdmin, isAdminActive }: 
           <div className="flex items-center gap-4">
             <button
               onClick={onOpenBooking}
-              className={`hidden md:block px-5 py-2.5 rounded font-body text-xs font-bold tracking-wider uppercase transition-all duration-300 hover:scale-[1.02] shadow-sm hover:shadow-md ${
-                isScrolled
-                  ? "bg-navy-primary text-white hover:bg-navy-light"
-                  : "bg-white text-navy-primary hover:bg-champagne"
-              }`}
+              className={`hidden md:block px-5 py-2.5 rounded font-body text-xs font-bold tracking-wider uppercase transition-all duration-300 hover:scale-[1.02] shadow-sm hover:shadow-md bg-navy-primary text-white hover:bg-navy-dark`}
             >
               BOOK SITE VISIT
             </button>
@@ -132,9 +122,9 @@ export default function Header({ onOpenBooking, onToggleAdmin, isAdminActive }: 
               className="lg:hidden p-1.5 focus:outline-none"
             >
               {mobileMenuOpen ? (
-                <X className={`h-6 w-6 ${isScrolled ? "text-navy-primary" : "text-white"}`} />
+                <X className="h-6 w-6 text-navy-primary" />
               ) : (
-                <Menu className={`h-6 w-6 ${isScrolled ? "text-navy-primary" : "text-white"}`} />
+                <Menu className="h-6 w-6 text-navy-primary" />
               )}
             </button>
           </div>

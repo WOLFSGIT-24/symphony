@@ -116,7 +116,7 @@ export default function TermsModal({ isOpen, onClose }: TermsModalProps) {
               <li><strong>Project:</strong> Symphony Heights | Disha Properties</li>
               <li><strong>Phone:</strong> 080 4735 9991</li>
               <li><strong>Email:</strong> info@symphonyheights.com</li>
-              <li><strong>Location:</strong> Hennur Outer Ring Road Corner, North Bangalore</li>
+              <li><strong>Location:</strong> Hennur Bagalur Road, Doddagubbi Main Rd, Bengaluru, 560077</li>
             </ul>
           </div>
         </div>

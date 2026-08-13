@@ -1,64 +1,137 @@
-import React from 'react';
-import { HelpCircle } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Download } from 'lucide-react';
 
 export default function ProjectHighlights() {
-  return (
-    <section className="py-8 bg-navy-dark border-b border-navy-primary/10 z-20 relative">
-      <div className="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
-        
-        {/* Compact Strip for Pricing and Payment Plan */}
-        <div className="flex flex-row items-center justify-center bg-white/5 border border-white/10 rounded-xl p-3 sm:p-5 mb-5 shadow-lg backdrop-blur-sm max-w-3xl mx-auto w-full">
-          
-          {/* Price Section */}
-          <div className="flex flex-col items-center flex-1 border-r border-white/10 px-2 sm:px-4">
-            <span className="font-body text-[8px] sm:text-[10px] lg:text-xs tracking-[0.2em] text-champagne uppercase mb-0.5">
-              Starting From
-            </span>
-            <span className="font-body text-lg sm:text-2xl lg:text-3xl font-semibold text-white tracking-wide">
-              ₹1.85 Cr*
-            </span>
-            <span className="text-[7px] sm:text-[9px] text-white/50 mt-0.5">
-              *Exclusive Incentives
-            </span>
-          </div>
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-          {/* Payment Plan Section */}
-          <div className="flex flex-col items-center flex-1 px-2 sm:px-4 relative group">
-            <div className="flex items-center gap-1 mb-0.5">
-              <span className="font-body text-[8px] sm:text-[10px] lg:text-xs tracking-[0.2em] text-gold font-bold uppercase">
-                Payment Plan
-              </span>
-              <div className="relative group/tooltip">
-                <HelpCircle className="h-3 w-3 text-gold/80 hover:text-gold cursor-pointer" />
-                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2 bg-white text-navy-dark text-[9px] rounded shadow-xl opacity-0 pointer-events-none group-hover/tooltip:opacity-100 transition-opacity z-20 text-center font-body normal-case tracking-normal border border-gold/20">
-                  Pay 25% on Booking, 25% on Plinth, 25% on Structure, and 25% on Possession.
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev === 0 ? 1 : 0));
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <section className="py-16 md:py-24 bg-marble relative z-20">
+      <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10">
+        
+        {/* Carousel Container */}
+        <div className="relative overflow-hidden rounded-xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] bg-white grid">
+          
+          {/* Slide 0: Pricing & Payment Plan */}
+          <div 
+            className={`col-start-1 row-start-1 transition-opacity duration-700 ease-in-out ${currentSlide === 0 ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'}`}
+          >
+            <div className="flex flex-col md:flex-row h-full">
+              {/* Left Logo Side */}
+              <div className="w-full md:w-5/12 bg-champagne/30 p-8 flex flex-col justify-center items-center text-center border-b md:border-b-0 md:border-r border-navy-primary/10">
+                <span className="font-body text-[10px] sm:text-xs font-bold tracking-widest text-navy-primary/60 uppercase mb-4">
+                  Launching
+                </span>
+                <img src="/logo.png" alt="Symphony Heights" className="h-24 sm:h-28 object-contain mb-4" />
+                <span className="font-body text-[10px] font-bold tracking-widest text-navy-primary uppercase">
+                  Hennur, North Bangalore
+                </span>
+              </div>
+              
+              {/* Right Content Side */}
+              <div className="w-full md:w-7/12 flex-1 bg-navy-primary p-8 sm:p-12 flex flex-col justify-center">
+                <div className="font-body text-xl sm:text-2xl font-semibold text-white tracking-wide mb-2">
+                  3 BED Homes
+                </div>
+                <div className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-champagne mb-8">
+                  ₹ 1.85 Cr* Onwards
+                </div>
+                
+                <div className="h-[1px] w-full bg-white/10 mb-8"></div>
+                
+                <div className="font-body text-sm sm:text-base font-bold text-white uppercase tracking-widest mb-3">
+                  ZERO PRE-EMI PLAN
+                </div>
+                <div className="font-body text-sm text-white/70 tracking-wide leading-relaxed">
+                  Pay 25% on Booking, 25% on Plinth, 25% on Structure, 25% on Possession.
                 </div>
               </div>
             </div>
-            <span className="font-body text-lg sm:text-2xl lg:text-3xl font-bold text-white tracking-widest whitespace-nowrap">
-              25:25:25:25
-            </span>
-            <span className="text-[7px] sm:text-[9px] text-gold/90 font-semibold tracking-wider uppercase mt-0.5">
-              Zero Pre-EMI Option
-            </span>
           </div>
+
+          {/* Slide 1: Features Grid */}
+          <div 
+            className={`col-start-1 row-start-1 transition-opacity duration-700 ease-in-out bg-white ${currentSlide === 1 ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'}`}
+          >
+            <div className="flex flex-col md:flex-row h-full">
+              {/* Left Logo Side */}
+              <div className="w-full md:w-5/12 bg-champagne/30 p-8 flex flex-col justify-center items-center text-center border-b md:border-b-0 md:border-r border-navy-primary/10">
+                <span className="font-body text-[10px] sm:text-xs font-bold tracking-widest text-navy-primary/60 uppercase mb-4">
+                  Experience
+                </span>
+                <img src="/logo.png" alt="Symphony Heights" className="h-24 sm:h-28 object-contain mb-4" />
+                <span className="font-body text-[10px] font-bold tracking-widest text-navy-primary uppercase">
+                  Hennur, North Bangalore
+                </span>
+              </div>
+              
+              {/* Right Features Grid */}
+              <div className="w-full md:w-7/12 flex-1 p-6 sm:p-10 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 bg-marble/20">
+                
+                {/* Feature 1 */}
+                <div className="border border-navy-primary/15 rounded-lg p-5 bg-white hover:bg-champagne/10 transition-colors shadow-sm">
+                  <div className="font-display text-xl font-bold text-navy-primary mb-2">128 Residences</div>
+                  <div className="font-body text-[10px] sm:text-xs font-semibold tracking-wider uppercase text-navy-primary/60">Boutique Community</div>
+                </div>
+
+                {/* Feature 2 */}
+                <div className="border border-navy-primary/15 rounded-lg p-5 bg-white hover:bg-champagne/10 transition-colors shadow-sm">
+                  <div className="font-display text-xl font-bold text-navy-primary mb-2">1 Acre Canvas</div>
+                  <div className="font-body text-[10px] sm:text-xs font-semibold tracking-wider uppercase text-navy-primary/60">Intimate Scale</div>
+                </div>
+
+                {/* Feature 3 */}
+                <div className="border border-navy-primary/15 rounded-lg p-5 bg-white hover:bg-champagne/10 transition-colors shadow-sm">
+                  <div className="font-display text-xl font-bold text-navy-primary mb-2">Rooftop Oasis</div>
+                  <div className="font-body text-[10px] sm:text-xs font-semibold tracking-wider uppercase text-navy-primary/60">With Infinity Pool</div>
+                </div>
+
+                {/* Feature 4 */}
+                <div className="border border-navy-primary/15 rounded-lg p-5 bg-white hover:bg-champagne/10 transition-colors shadow-sm">
+                  <div className="font-display text-xl font-bold text-navy-primary mb-2">Global Planners</div>
+                  <div className="font-body text-[10px] sm:text-xs font-semibold tracking-wider uppercase text-navy-primary/60">RERA Approved</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        {/* Compact Highlight Pills */}
-        <div className="flex flex-wrap justify-center gap-2 lg:gap-3 max-w-5xl mx-auto">
-          {[
-            "Premium 3 BHK Homes",
-            "Only 128 Residences",
-            "Hennur, North Bangalore",
-            "3 Levels of Amenities",
-            "25 Mins to Manyata Tech",
-            "20 Mins to Mall of Asia",
-            "30 Mins to Kempegowda Int. Airport"
-          ].map((item, idx) => (
-            <span key={idx} className="bg-white/5 border border-white/10 rounded-full px-3 py-1.5 text-[9px] sm:text-[10px] font-body font-semibold text-white/80 uppercase tracking-widest hover:bg-white/10 hover:text-white transition-colors cursor-default whitespace-nowrap">
-              {item}
-            </span>
-          ))}
+        {/* Carousel Controls & CTA */}
+        <div className="mt-10 flex flex-col items-center justify-center gap-8">
+          <a
+            href="/Brochure.pdf"
+            download="Symphony-Heights-Brochure.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-3 bg-navy-dark text-white font-body text-xs font-bold tracking-widest uppercase px-10 py-5 rounded-full hover:bg-navy-primary transition-all shadow-xl hover:-translate-y-1 duration-300 w-full sm:w-auto"
+          >
+            <Download className="h-4 w-4" />
+            Download Brochure
+          </a>
+
+          {/* Navigation Dots */}
+          <div className="flex items-center gap-3">
+            {[0, 1].map((idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentSlide(idx)}
+                className={`transition-all duration-300 rounded-full ${
+                  currentSlide === idx
+                    ? 'w-8 h-2 bg-navy-primary'
+                    : 'w-2 h-2 bg-navy-primary/20 hover:bg-navy-primary/50'
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
         </div>
 
       </div>

@@ -115,14 +115,15 @@ export default function App() {
       {/* Property Privacy and Scale Section */}
       <IntimateScale />
 
+      {/* Interactive Floor Drafting Plans */}
+      <FloorPlans onSelectUnit={handleSelectUnitType} />
+
       {/* Stacked Amenities Presentation */}
       <Amenities />
 
       {/* Location Connectivity Grid */}
       <Location />
 
-      {/* Interactive Floor Drafting Plans */}
-      <FloorPlans onSelectUnit={handleSelectUnitType} />
 
       {/* Brochure / Intake Form Section */}
       <BrochureForm onAddLead={handleAddLead} preselectedUnit={preselectedUnit} />
@@ -152,13 +153,13 @@ export default function App() {
       />
 
       {/* Fixed Mobile Bottom CTA Bar */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-[0_-10px_30px_rgba(0,0,0,0.1)] z-40 flex items-center p-3 gap-3 border-t border-navy-primary/10">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 flex shadow-[0_-10px_30px_rgba(0,0,0,0.15)]">
         <a 
           href="tel:08047359991" 
-          className="flex-1 flex items-center justify-center gap-2 bg-navy-dark text-white font-body text-xs font-bold uppercase tracking-wider py-3.5 rounded shadow-sm"
+          className="flex-1 flex items-center justify-center gap-2 bg-navy-primary text-white font-body text-[11px] font-extrabold uppercase tracking-[0.15em] py-4 transition-colors hover:bg-navy-dark border-r border-white/20"
         >
-          <Phone className="h-4 w-4" />
-          Call
+          <Phone className="h-4 w-4 fill-white" />
+          Call Now
         </a>
         <button 
           onClick={() => {
@@ -166,15 +167,15 @@ export default function App() {
             const target = document.getElementById("lead-capture-section");
             if (target) target.scrollIntoView({ behavior: "smooth" });
           }}
-          className="flex-[2] flex items-center justify-center py-3.5 rounded bg-navy-primary text-white font-bold text-xs uppercase tracking-wider shadow"
+          className="flex-1 flex items-center justify-center bg-navy-primary text-white font-body text-[11px] font-extrabold uppercase tracking-[0.15em] py-4 transition-colors hover:bg-navy-dark"
         >
-          Book Walkthrough
+          Enquire Now
         </button>
       </div>
 
       {/* WhatsApp Floating Button */}
       <a
-        href="https://wa.me/919876543210"
+        href="https://wa.me/919035679657"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-[84px] md:bottom-8 right-4 md:right-8 bg-[#25D366] text-white p-3.5 md:p-4 rounded-full shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:shadow-[0_8px_30px_rgba(37,211,102,0.6)] hover:scale-110 transition-all z-40 flex items-center justify-center animate-fade-in"

@@ -53,75 +53,76 @@ export default function FloorPlans({ onSelectUnit }: FloorPlansProps) {
         </div>
 
         {/* Dynamic Drafting Cards */}
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           {filteredPlans.map((plan: FloorPlanUnit) => (
             <div
               key={plan.id}
-              className="bg-[#FBF9FB] p-6 sm:p-8 rounded-xl border border-champagne hover:border-navy-primary/20 shadow-lg hover:shadow-xl transition-all duration-500 group flex flex-col justify-between"
+              className="bg-[#FBF9FB] p-6 sm:p-8 rounded-xl border border-champagne hover:border-navy-primary/20 shadow-lg hover:shadow-xl transition-all duration-500 group flex flex-col-reverse md:flex-row gap-8 justify-between"
             >
-              {/* Header Title with premium badge */}
-              <div>
-                <div className="flex justify-between items-start gap-4 mb-6">
-                  <div>
-                    <h4 className="font-display text-xl sm:text-2xl text-navy-primary font-semibold">
-                      {plan.title}
-                    </h4>
-                    <span className="text-[10px] font-bold text-gray-text/70 uppercase tracking-widest mt-0.5 block">
-                      Super Built-up Area: {plan.area}
+              {/* Left Side: Info & Points */}
+              <div className="w-full md:w-5/12 flex flex-col justify-between">
+                <div>
+                  {/* Header Title with premium badge */}
+                  <div className="flex justify-between items-start gap-4 mb-6">
+                    <div>
+                      <h4 className="font-display text-xl sm:text-2xl text-navy-primary font-semibold">
+                        {plan.title}
+                      </h4>
+                      <span className="text-[10px] font-bold text-gray-text/70 uppercase tracking-widest mt-0.5 block">
+                        Super Built-up Area: {plan.area}
+                      </span>
+                    </div>
+                    <span className="px-4 py-1.5 bg-champagne text-navy-primary font-body text-[10px] font-bold rounded-full uppercase tracking-widest self-start">
+                      {plan.type}
                     </span>
                   </div>
-                  <span className="px-4 py-1.5 bg-champagne text-navy-primary font-body text-[10px] font-bold rounded-full uppercase tracking-widest">
-                    {plan.type}
-                  </span>
-                </div>
 
-                {/* Interactive blueprint visual preview */}
-                <div className="aspect-video md:aspect-[2/1] relative p-4 sm:p-6 bg-white rounded-lg border border-navy-primary/5 flex items-center justify-center overflow-hidden">
-                  {/* Magnifier glass button overlay */}
-                  <div className="absolute inset-0 bg-navy-dark/45 opacity-0 group-hover:opacity-100 transition-all duration-500 z-10 flex items-center justify-center gap-2">
-                    <button
-                      onClick={() => setBlueprintModal(plan)}
-                      className="bg-white text-navy-primary font-body text-xs font-bold tracking-widest uppercase px-5 py-3 rounded shadow-xl flex items-center gap-2 transform translate-y-2 group-hover:translate-y-0 transition-all hover:bg-champagne"
-                    >
-                      <ZoomIn className="h-4 w-4" />
-                      View Blueprint
-                    </button>
-                  </div>
-
-                  <img
-                    src={plan.imageUrl}
-                    alt={plan.title}
-                    referrerPolicy="no-referrer"
-                    className="max-w-full max-h-full object-contain transform group-hover:scale-[1.03] transition-transform duration-700"
-                  />
-                </div>
-
-
-
-                {/* Structured details parameters */}
-                <div className="mt-6">
-                  <span className="text-[9px] font-extrabold text-navy-primary uppercase tracking-[0.2em] block mb-2">
-                    Layout Highlights:
-                  </span>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {plan.highlights.map((highlight, hIdx) => (
-                      <div key={hIdx} className="flex gap-2 items-start text-xs text-gray-text font-body">
-                        <CheckCircle2 className="h-4 w-4 text-bronze mt-0.5 shrink-0" />
-                        <span>{highlight}</span>
-                      </div>
-                    ))}
+                  {/* Structured details parameters */}
+                  <div className="mt-6 md:mt-8">
+                    <span className="text-[9px] font-extrabold text-navy-primary uppercase tracking-[0.2em] block mb-3">
+                      Layout Highlights:
+                    </span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-3">
+                      {plan.highlights.map((highlight, hIdx) => (
+                        <div key={hIdx} className="flex gap-2 items-start text-xs text-gray-text font-body">
+                          <CheckCircle2 className="h-4 w-4 text-bronze mt-0.5 shrink-0" />
+                          <span>{highlight}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
+
+                {/* Inquire specifically about this unit */}
+                <button
+                  onClick={() => onSelectUnit(plan.type)}
+                  className="w-full mt-8 bg-navy-primary/5 hover:bg-navy-primary hover:text-white border border-navy-primary/10 text-navy-primary font-body text-xs font-bold tracking-widest uppercase py-3.5 rounded flex items-center justify-center gap-2 transition-all duration-300"
+                >
+                  Inquire About Layout
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </button>
               </div>
 
-              {/* Inquire specifically about this unit */}
-              <button
-                onClick={() => onSelectUnit(plan.type)}
-                className="w-full mt-8 bg-navy-primary/5 hover:bg-navy-primary hover:text-white border border-navy-primary/10 text-navy-primary font-body text-xs font-bold tracking-widest uppercase py-3.5 rounded flex items-center justify-center gap-2 transition-all duration-300"
-              >
-                Inquire About Layout
-                <ArrowRight className="h-3.5 w-3.5" />
-              </button>
+              {/* Right Side: Interactive blueprint visual preview */}
+              <div className="w-full md:w-7/12 aspect-square md:aspect-auto relative p-4 sm:p-6 bg-white rounded-lg border border-navy-primary/5 flex items-center justify-center overflow-hidden min-h-[300px]">
+                {/* Magnifier glass button overlay */}
+                <div className="absolute inset-0 bg-navy-dark/45 opacity-0 group-hover:opacity-100 transition-all duration-500 z-10 flex items-center justify-center gap-2">
+                  <button
+                    onClick={() => setBlueprintModal(plan)}
+                    className="bg-white text-navy-primary font-body text-xs font-bold tracking-widest uppercase px-5 py-3 rounded shadow-xl flex items-center gap-2 transform translate-y-2 group-hover:translate-y-0 transition-all hover:bg-champagne"
+                  >
+                    <ZoomIn className="h-4 w-4" />
+                    View Blueprint
+                  </button>
+                </div>
+
+                <img
+                  src={plan.imageUrl}
+                  alt={plan.title}
+                  referrerPolicy="no-referrer"
+                  className="max-w-full max-h-full object-contain transform group-hover:scale-[1.03] transition-transform duration-700"
+                />
+              </div>
 
             </div>
           ))}

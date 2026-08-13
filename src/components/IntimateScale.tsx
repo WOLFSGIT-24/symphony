@@ -27,16 +27,12 @@ export default function IntimateScale() {
             {/* Project Highlights List */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4">
               {[
-                "Premium 3 BHK Homes",
                 "1836 Sq.ft Onwards",
                 "Single Tower Development",
-                "Only 128 Residences",
                 "Three Lifestyle Levels",
                 "Premium Clubhouse",
                 "Spacious Floor Plans",
-                "Natural Ventilation",
-                "Exclusive 25:25:25:25 Payment Plan",
-                "RERA Approved Project"
+                "Natural Ventilation"
               ].map((highlight, idx) => (
                 <div key={idx} className="flex items-center gap-2 font-body text-sm text-charcoal/90">
                   <div className="h-1.5 w-1.5 rounded-full bg-bronze shrink-0" />

@@ -136,22 +136,10 @@ export default function Location() {
 
           <div className="lg:col-span-7 rounded-xl shadow-2xl overflow-hidden relative border border-navy-primary/10 flex items-center justify-center bg-[#F4EDE5] p-6 sm:p-10 lg:p-12">
             
-            {/* Address Overlay */}
-            <div className="absolute top-4 left-4 sm:top-6 sm:left-6 bg-white/95 backdrop-blur p-4 sm:p-5 rounded-lg shadow-lg border border-navy-primary/10 z-10">
-              <h4 className="font-display text-xs font-bold text-navy-primary uppercase tracking-wider mb-2">
-                Enclave Location
-              </h4>
-              <div className="font-body text-xs sm:text-sm text-charcoal space-y-0.5">
-                <p className="font-bold text-navy-primary">Hennur Outer Ring Road Corner</p>
-                <p>North Bangalore, Karnataka</p>
-                <p>India - 560077</p>
-              </div>
-            </div>
-
             <img 
               src="/map.png"
               alt="Location Map"
-              className="w-full max-w-lg lg:max-w-xl h-auto object-contain drop-shadow-sm mt-16 sm:mt-0"
+              className="w-full max-w-sm sm:max-w-md lg:max-w-lg h-auto object-contain drop-shadow-sm"
             />
           </div>
 

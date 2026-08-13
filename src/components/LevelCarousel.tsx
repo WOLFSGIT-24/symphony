@@ -43,7 +43,7 @@ export default function LevelCarousel({ images, title }: LevelCarouselProps) {
             key={idx}
             src={src}
             alt={`${title} - image ${idx + 1}`}
-            className="w-full h-full object-contain shrink-0"
+            className="w-full h-full object-cover shrink-0"
           />
         ))}
       </div>

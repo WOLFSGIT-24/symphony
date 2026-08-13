@@ -14,11 +14,12 @@ export default function BrochureForm({ onAddLead, preselectedUnit }: BrochureFor
     email: "",
     phone: "",
     preferredDate: "",
-    preferredTime: "11:00",
-    unitType: "",
-    source: "brochure_form" as const,
+    preferredTime: "",
+    source: "Website Landing Page",
+    unitType: preselectedUnit || "",
   });
 
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [validatedCode, setValidatedCode] = useState("");
@@ -37,11 +38,41 @@ export default function BrochureForm({ onAddLead, preselectedUnit }: BrochureFor
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { id, value } = e.target;
-    setFormData((prev) => ({ ...prev, [id]: value }));
+    
+    let sanitizedValue = value;
+    if (id === "phone") {
+      sanitizedValue = value.replace(/\D/g, '').slice(0, 10);
+    } else if (id === "fullName") {
+      sanitizedValue = value.replace(/[^A-Za-z\s]/g, '');
+    }
+    
+    setFormData((prev) => ({ ...prev, [id]: sanitizedValue }));
+    if (errors[id]) {
+      setErrors((prev) => ({ ...prev, [id]: "" }));
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Field Authentication (Validation)
+    const newErrors: Record<string, string> = {};
+    if (!/^[A-Za-z\s]+$/.test(formData.fullName.trim())) {
+      newErrors.fullName = "Name should only contain letters";
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      newErrors.email = "Please enter a valid email address";
+    }
+    if (!/^\d{10}$/.test(formData.phone.trim())) {
+      newErrors.phone = "Phone number must be exactly 10 digits";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+    setErrors({});
+    
     setLoading(true);
 
     // Simulate lead verification and catalog creation
@@ -132,7 +163,7 @@ will contact you shortly.
                   <span className="font-semibold text-white">Only 128 Residences</span>
                 </li>
                 <li className="flex justify-between border-b border-white/5 pb-2.5">
-                  <span className="font-semibold text-white">Hennur Outer Ring Road Corner, North Bangalore</span>
+                  <span className="font-semibold text-white">Hennur Bagalur Road, Doddagubbi Main Rd, Bengaluru, 560077</span>
                 </li>
                 <li className="flex justify-between border-b border-white/5 pb-2.5">
                   <span className="font-semibold text-white">Exclusive 25:25:25:25 Payment Plan</span>
@@ -178,6 +209,7 @@ will contact you shortly.
                           className="w-full bg-transparent border-none text-sm font-body outline-none placeholder:text-gray-300 py-1"
                         />
                       </div>
+                      {errors.fullName && <p className="text-red-500 text-[10px] mt-1 absolute -bottom-4">{errors.fullName}</p>}
                     </div>
 
                     {/* Email Address */}
@@ -197,6 +229,7 @@ will contact you shortly.
                           className="w-full bg-transparent border-none text-sm font-body outline-none placeholder:text-gray-300 py-1"
                         />
                       </div>
+                      {errors.email && <p className="text-red-500 text-[10px] mt-1 absolute -bottom-4">{errors.email}</p>}
                     </div>
 
                     {/* Phone Number */}
@@ -216,6 +249,7 @@ will contact you shortly.
                           className="w-full bg-transparent border-none text-sm font-body outline-none placeholder:text-gray-300 py-1"
                         />
                       </div>
+                      {errors.phone && <p className="text-red-500 text-[10px] mt-1 absolute -bottom-4">{errors.phone}</p>}
                     </div>
 
                     {/* Multi-Unit Interest Segment */}

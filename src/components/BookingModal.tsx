@@ -29,14 +29,45 @@ export default function BookingModal({
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
-    setFormData((prev) => ({ ...prev, [id]: value }));
+    
+    let sanitizedValue = value;
+    if (id === "phone") {
+      sanitizedValue = value.replace(/\D/g, '').slice(0, 10);
+    } else if (id === "fullName") {
+      sanitizedValue = value.replace(/[^A-Za-z\s]/g, '');
+    }
+    
+    setFormData((prev) => ({ ...prev, [id]: sanitizedValue }));
+    if (errors[id]) {
+      setErrors((prev) => ({ ...prev, [id]: "" }));
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Field Authentication (Validation)
+    const newErrors: Record<string, string> = {};
+    if (!/^[A-Za-z\s]+$/.test(formData.fullName.trim())) {
+      newErrors.fullName = "Name should only contain letters";
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      newErrors.email = "Please enter a valid email address";
+    }
+    if (!/^\d{10}$/.test(formData.phone.trim())) {
+      newErrors.phone = "Phone number must be exactly 10 digits";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+    setErrors({});
+    
     setLoading(true);
 
     setTimeout(() => {
@@ -104,6 +135,7 @@ export default function BookingModal({
                     className="w-full bg-transparent border-none text-xs sm:text-sm font-body outline-none placeholder:text-gray-300 py-1"
                   />
                 </div>
+                {errors.fullName && <p className="text-red-500 text-[10px] mt-1 absolute -bottom-4">{errors.fullName}</p>}
               </div>
 
               {/* Email Address */}
@@ -123,6 +155,7 @@ export default function BookingModal({
                     className="w-full bg-transparent border-none text-xs sm:text-sm font-body outline-none placeholder:text-gray-300 py-1"
                   />
                 </div>
+                {errors.email && <p className="text-red-500 text-[10px] mt-1 absolute -bottom-4">{errors.email}</p>}
               </div>
 
               {/* Phone Number */}
@@ -142,6 +175,7 @@ export default function BookingModal({
                     className="w-full bg-transparent border-none text-xs sm:text-sm font-body outline-none placeholder:text-gray-300 py-1"
                   />
                 </div>
+                {errors.phone && <p className="text-red-500 text-[10px] mt-1 absolute -bottom-4">{errors.phone}</p>}
               </div>
 
               {/* Scheduling grid */}
