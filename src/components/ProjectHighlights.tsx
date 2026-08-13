@@ -108,7 +108,8 @@ export default function ProjectHighlights() {
         <div className="mt-10 flex flex-col items-center justify-center gap-8">
           <a
             href="/Brochure.pdf"
-            download="Symphony-Heights-Brochure.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 bg-navy-dark text-white font-body text-xs font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-navy-primary transition-colors shadow-lg w-full sm:w-auto rounded-sm"
           >
             <Download className="h-4 w-4" />
