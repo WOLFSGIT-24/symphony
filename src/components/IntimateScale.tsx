@@ -43,14 +43,15 @@ export default function IntimateScale() {
             
             {/* CTA Button */}
             <div className="pt-6">
-              <a 
-                href="/Brochure.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-transparent border border-navy-primary text-navy-primary font-body text-xs font-bold tracking-widest uppercase px-6 py-3.5 hover:bg-navy-primary hover:text-white transition-colors w-full sm:w-auto justify-center rounded-sm"
+              <button 
+                onClick={() => {
+                  const target = document.getElementById("lead-capture-section");
+                  if (target) target.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="inline-flex items-center gap-2 bg-transparent border border-navy-primary text-navy-primary font-body text-xs font-bold tracking-widest uppercase px-6 py-3.5 hover:bg-navy-primary hover:text-white transition-colors w-full sm:w-auto justify-center rounded-sm cursor-pointer"
               >
                 Download Floor Plans
-              </a>
+              </button>
             </div>
           </div>
 

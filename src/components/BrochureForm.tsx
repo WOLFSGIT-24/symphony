@@ -97,37 +97,10 @@ export default function BrochureForm({ onAddLead, preselectedUnit }: BrochureFor
   };
 
   const handleDownloadBrochure = () => {
-    // Generate simulated dynamic catalog download
-    const brochureText = `
-========================================
-SYMPHONY HEIGHTS - BOUTIQUE COLLECTIVE
-========================================
-Brochure Code: ${validatedCode}
-Lead Register: ${formData.fullName}
-Unit Preference: ${formData.unitType || "General Information"}
-Contact Registered: ${formData.email} / ${formData.phone}
-========================================
-Thank you for your interest in North Bangalore's 
-most exclusive 128 boutique enclave.
-
-PROJECT SNAPSHOT:
-- Total Land Area: 2.5 Acres
-- Boutique Units: 128 Elite Residences
-- Configuration: 2 & 3 BHK Premium Units
-- Intended Possession: December 2026
-- RERA ID: PRM/KA/RERA/1251/446/PR/250925/008120
-
-A customized investment projection has been sent 
-to your email address. Our Relationship Director 
-will contact you shortly.
-========================================
-    `;
-
-    const blob = new Blob([brochureText], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
-    link.href = url;
-    link.download = `Symphony_Heights_E_Brochure_${formData.fullName.replace(/\s+/g, "_")}.txt`;
+    link.href = "/Brochure.pdf";
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -310,21 +283,14 @@ will contact you shortly.
                     </p>
                   </div>
 
-                  {/* Verification coupon */}
-                  <div className="p-4 bg-navy-primary/5 rounded border border-navy-primary/10 max-w-sm mx-auto flex flex-col items-center">
-                    <span className="text-[9px] font-extrabold text-navy-primary uppercase tracking-[0.2em]">
-                      Secure Brochure Verification Token
-                    </span>
-                    <span className="font-display text-xl font-bold text-navy-primary mt-1 tracking-wider">
-                      {validatedCode}
-                    </span>
-                    {formData.preferredDate && (
-                      <span className="text-[10px] text-gray-text mt-2 font-body flex items-center gap-1">
-                        <Calendar className="h-3 w-3 text-bronze" />
-                        Site appointment locked: {formData.preferredDate} at {formData.preferredTime}
+                  {formData.preferredDate && (
+                    <div className="flex items-center justify-center gap-1.5 text-xs text-navy-primary font-body bg-navy-primary/5 py-2 px-4 rounded-full w-max mx-auto">
+                      <Calendar className="h-3.5 w-3.5 text-bronze" />
+                      <span>
+                        Site appointment locked: <strong>{formData.preferredDate}</strong> at <strong>{formData.preferredTime}</strong>
                       </span>
-                    )}
-                  </div>
+                    </div>
+                  )}
 
                   <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
                     <button

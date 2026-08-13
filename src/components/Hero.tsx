@@ -74,15 +74,16 @@ export default function Hero({ onOpenEnquiry }: HeroProps) {
               Book A Home Tour
               <ArrowRight className="h-4 w-4" />
             </button>
-            <a
-              href="/Brochure.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 bg-transparent border border-navy-primary text-navy-primary font-body text-xs font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-navy-primary hover:text-white transition-colors w-full sm:w-auto rounded-sm"
+            <button
+              onClick={() => {
+                const target = document.getElementById("lead-capture-section");
+                if (target) target.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="flex items-center justify-center gap-2 bg-transparent border border-navy-primary text-navy-primary font-body text-xs font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-navy-primary hover:text-white transition-colors w-full sm:w-auto rounded-sm cursor-pointer"
             >
               <Download className="h-4 w-4" />
               Brochure
-            </a>
+            </button>
           </div>
 
           {/* Secondary Tilted Image (Bottom Right) */}
