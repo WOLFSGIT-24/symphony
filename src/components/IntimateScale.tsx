@@ -1,7 +1,11 @@
 import React from "react";
 import { ShieldAlert, Compass, Sparkles, Building2 } from "lucide-react";
 
-export default function IntimateScale() {
+interface IntimateScaleProps {
+  onRequestDownload?: () => void;
+}
+
+export default function IntimateScale({ onRequestDownload }: IntimateScaleProps) {
   return (
     <section className="w-full py-24 bg-marble overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -44,10 +48,7 @@ export default function IntimateScale() {
             {/* CTA Button */}
             <div className="pt-6">
               <button 
-                onClick={() => {
-                  const target = document.getElementById("lead-capture-section");
-                  if (target) target.scrollIntoView({ behavior: "smooth" });
-                }}
+                onClick={onRequestDownload}
                 className="inline-flex items-center gap-2 bg-transparent border border-navy-primary text-navy-primary font-body text-xs font-bold tracking-widest uppercase px-6 py-3.5 hover:bg-navy-primary hover:text-white transition-colors w-full sm:w-auto justify-center rounded-sm cursor-pointer"
               >
                 Download Floor Plans

@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Download } from 'lucide-react';
 
-export default function ProjectHighlights() {
+interface ProjectHighlightsProps {
+  onRequestDownload?: () => void;
+}
+
+export default function ProjectHighlights({ onRequestDownload }: ProjectHighlightsProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -107,10 +111,7 @@ export default function ProjectHighlights() {
         {/* Carousel Controls & CTA */}
         <div className="mt-10 flex flex-col items-center justify-center gap-8">
           <button
-            onClick={() => {
-              const target = document.getElementById("lead-capture-section");
-              if (target) target.scrollIntoView({ behavior: "smooth" });
-            }}
+            onClick={onRequestDownload}
             className="flex items-center justify-center gap-2 bg-navy-dark text-white font-body text-xs font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-navy-primary transition-colors shadow-lg w-full sm:w-auto rounded-sm cursor-pointer"
           >
             <Download className="h-4 w-4" />

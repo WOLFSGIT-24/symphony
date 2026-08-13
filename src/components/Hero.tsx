@@ -3,9 +3,10 @@ import { ArrowRight, Download } from "lucide-react";
 
 interface HeroProps {
   onOpenEnquiry: () => void;
+  onRequestDownload?: () => void;
 }
 
-export default function Hero({ onOpenEnquiry }: HeroProps) {
+export default function Hero({ onOpenEnquiry, onRequestDownload }: HeroProps) {
   return (
     <section
       id="overview"
@@ -75,10 +76,7 @@ export default function Hero({ onOpenEnquiry }: HeroProps) {
               <ArrowRight className="h-4 w-4" />
             </button>
             <button
-              onClick={() => {
-                const target = document.getElementById("lead-capture-section");
-                if (target) target.scrollIntoView({ behavior: "smooth" });
-              }}
+              onClick={onRequestDownload}
               className="flex items-center justify-center gap-2 bg-transparent border border-navy-primary text-navy-primary font-body text-xs font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-navy-primary hover:text-white transition-colors w-full sm:w-auto rounded-sm cursor-pointer"
             >
               <Download className="h-4 w-4" />

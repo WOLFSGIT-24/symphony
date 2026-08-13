@@ -15,6 +15,7 @@ import Gallery from "./components/Gallery";
 import PrivacyPolicyModal from "./components/PrivacyPolicyModal";
 import TermsModal from "./components/TermsModal";
 import OfferModal from "./components/OfferModal";
+import DownloadModal from "./components/DownloadModal";
 import { LeadSubmission } from "./types";
 
 const LOCAL_STORAGE_KEY = "symphony_heights_leads";
@@ -27,6 +28,7 @@ export default function App() {
   const [termsOpen, setTermsOpen] = useState(false);
   const [offerOpen, setOfferOpen] = useState(false);
   const [preselectedUnit, setPreselectedUnit] = useState<string | null>(null);
+  const [downloadModalOpen, setDownloadModalOpen] = useState(false);
 
   // Trigger offer modal after 4 seconds
   useEffect(() => {
@@ -73,6 +75,10 @@ export default function App() {
     saveLeadsToCache(updated);
   };
 
+  const handleRequestDownload = () => {
+    setDownloadModalOpen(true);
+  };
+
   const handleUpdateStatus = (id: string, status: LeadSubmission["status"]) => {
     const updated = leads.map((l) => (l.id === id ? { ...l, status } : l));
     saveLeadsToCache(updated);
@@ -117,13 +123,13 @@ export default function App() {
       />
 
       {/* Hero Entrance Banner */}
-      <Hero onOpenEnquiry={handleHeroEnquiry} />
+      <Hero onOpenEnquiry={handleHeroEnquiry} onRequestDownload={handleRequestDownload} />
 
       {/* Project Pricing and Highlights */}
-      <ProjectHighlights />
+      <ProjectHighlights onRequestDownload={handleRequestDownload} />
 
       {/* Property Privacy and Scale Section */}
-      <IntimateScale />
+      <IntimateScale onRequestDownload={handleRequestDownload} />
 
       {/* Interactive Floor Drafting Plans */}
       <FloorPlans onSelectUnit={handleSelectUnitType} />
@@ -136,7 +142,10 @@ export default function App() {
 
 
       {/* Brochure / Intake Form Section */}
-      <BrochureForm onAddLead={handleAddLead} preselectedUnit={preselectedUnit} />
+      <BrochureForm 
+        onAddLead={handleAddLead} 
+        preselectedUnit={preselectedUnit} 
+      />
 
       {/* Gallery Section */}
       <Gallery />
@@ -150,6 +159,13 @@ export default function App() {
         }}
         onAddLead={handleAddLead}
         initialUnitType={preselectedUnit}
+      />
+
+      {/* Download Brochure Modal Dialog */}
+      <DownloadModal
+        isOpen={downloadModalOpen}
+        onClose={() => setDownloadModalOpen(false)}
+        onAddLead={handleAddLead}
       />
 
       {/* Lead CRM Dashboard Overlay */}
