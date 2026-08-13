@@ -45,10 +45,8 @@ export default function IntimateScale() {
             <div className="pt-6">
               <a 
                 href="/Brochure.pdf"
-                download="Symphony-Heights-Floor-Plans.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-navy-primary text-white hover:bg-navy-light text-xs font-bold tracking-widest uppercase px-6 py-4 rounded shadow-sm transition-colors inline-block"
+                download="Symphony-Heights-Brochure.pdf"
+                className="inline-flex items-center gap-2 bg-transparent border border-navy-primary text-navy-primary font-body text-xs font-bold tracking-widest uppercase px-6 py-3.5 hover:bg-navy-primary hover:text-white transition-colors w-full sm:w-auto justify-center rounded-sm"
               >
                 Download Floor Plans
               </a>

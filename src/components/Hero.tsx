@@ -77,8 +77,6 @@ export default function Hero({ onOpenEnquiry }: HeroProps) {
             <a
               href="/Brochure.pdf"
               download="Symphony-Heights-Brochure.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-transparent border border-navy-primary text-navy-primary font-body text-xs font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-navy-primary hover:text-white transition-colors w-full sm:w-auto rounded-sm"
             >
               <Download className="h-4 w-4" />
