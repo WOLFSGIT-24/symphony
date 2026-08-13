@@ -72,30 +72,30 @@ export default function ProjectHighlights() {
               </div>
               
               {/* Right Features Grid */}
-              <div className="w-full md:w-7/12 flex-1 p-6 sm:p-10 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 bg-marble/20">
+              <div className="w-full md:w-7/12 flex-1 p-4 sm:p-10 grid grid-cols-2 gap-3 sm:gap-6 bg-marble/20">
                 
                 {/* Feature 1 */}
-                <div className="border border-navy-primary/15 rounded-lg p-5 bg-white hover:bg-champagne/10 transition-colors shadow-sm">
-                  <div className="font-display text-xl font-bold text-navy-primary mb-2">128 Residences</div>
-                  <div className="font-body text-[10px] sm:text-xs font-semibold tracking-wider uppercase text-navy-primary/60">Boutique Community</div>
+                <div className="border border-navy-primary/15 rounded-lg p-3 sm:p-5 bg-white hover:bg-champagne/10 transition-colors shadow-sm">
+                  <div className="font-display text-[16px] sm:text-xl font-bold text-navy-primary mb-1 sm:mb-2 leading-tight">128 Residences</div>
+                  <div className="font-body text-[9px] sm:text-xs font-semibold tracking-wider uppercase text-navy-primary/60">Boutique Community</div>
                 </div>
 
                 {/* Feature 2 */}
-                <div className="border border-navy-primary/15 rounded-lg p-5 bg-white hover:bg-champagne/10 transition-colors shadow-sm">
-                  <div className="font-display text-xl font-bold text-navy-primary mb-2">1 Acre Canvas</div>
-                  <div className="font-body text-[10px] sm:text-xs font-semibold tracking-wider uppercase text-navy-primary/60">Intimate Scale</div>
+                <div className="border border-navy-primary/15 rounded-lg p-3 sm:p-5 bg-white hover:bg-champagne/10 transition-colors shadow-sm">
+                  <div className="font-display text-[16px] sm:text-xl font-bold text-navy-primary mb-1 sm:mb-2 leading-tight">1 Acre Canvas</div>
+                  <div className="font-body text-[9px] sm:text-xs font-semibold tracking-wider uppercase text-navy-primary/60">Intimate Scale</div>
                 </div>
 
                 {/* Feature 3 */}
-                <div className="border border-navy-primary/15 rounded-lg p-5 bg-white hover:bg-champagne/10 transition-colors shadow-sm">
-                  <div className="font-display text-xl font-bold text-navy-primary mb-2">Rooftop Oasis</div>
-                  <div className="font-body text-[10px] sm:text-xs font-semibold tracking-wider uppercase text-navy-primary/60">With Infinity Pool</div>
+                <div className="border border-navy-primary/15 rounded-lg p-3 sm:p-5 bg-white hover:bg-champagne/10 transition-colors shadow-sm">
+                  <div className="font-display text-[16px] sm:text-xl font-bold text-navy-primary mb-1 sm:mb-2 leading-tight">Rooftop Oasis</div>
+                  <div className="font-body text-[9px] sm:text-xs font-semibold tracking-wider uppercase text-navy-primary/60">With Infinity Pool</div>
                 </div>
 
                 {/* Feature 4 */}
-                <div className="border border-navy-primary/15 rounded-lg p-5 bg-white hover:bg-champagne/10 transition-colors shadow-sm">
-                  <div className="font-display text-xl font-bold text-navy-primary mb-2">Global Planners</div>
-                  <div className="font-body text-[10px] sm:text-xs font-semibold tracking-wider uppercase text-navy-primary/60">RERA Approved</div>
+                <div className="border border-navy-primary/15 rounded-lg p-3 sm:p-5 bg-white hover:bg-champagne/10 transition-colors shadow-sm">
+                  <div className="font-display text-[16px] sm:text-xl font-bold text-navy-primary mb-1 sm:mb-2 leading-tight">Global Planners</div>
+                  <div className="font-body text-[9px] sm:text-xs font-semibold tracking-wider uppercase text-navy-primary/60">RERA Approved</div>
                 </div>
 
               </div>
@@ -111,7 +111,7 @@ export default function ProjectHighlights() {
             download="Symphony-Heights-Brochure.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-3 bg-navy-dark text-white font-body text-xs font-bold tracking-widest uppercase px-10 py-5 rounded-full hover:bg-navy-primary transition-all shadow-xl hover:-translate-y-1 duration-300 w-full sm:w-auto"
+            className="flex items-center justify-center gap-2 bg-navy-dark text-white font-body text-xs font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-navy-primary transition-colors shadow-lg w-full sm:w-auto rounded-sm"
           >
             <Download className="h-4 w-4" />
             Download Brochure

@@ -96,7 +96,7 @@ export default function FloorPlans({ onSelectUnit }: FloorPlansProps) {
                 {/* Inquire specifically about this unit */}
                 <button
                   onClick={() => onSelectUnit(plan.type)}
-                  className="w-full mt-8 bg-navy-primary/5 hover:bg-navy-primary hover:text-white border border-navy-primary/10 text-navy-primary font-body text-xs font-bold tracking-widest uppercase py-3.5 rounded flex items-center justify-center gap-2 transition-all duration-300"
+                  className="w-full flex items-center justify-center gap-2 bg-transparent border border-navy-primary text-navy-primary font-body text-xs font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-navy-primary hover:text-white transition-colors rounded-sm mt-8"
                 >
                   Inquire About Layout
                   <ArrowRight className="h-3.5 w-3.5" />
@@ -109,7 +109,7 @@ export default function FloorPlans({ onSelectUnit }: FloorPlansProps) {
                 <div className="absolute inset-0 bg-navy-dark/45 opacity-0 group-hover:opacity-100 transition-all duration-500 z-10 flex items-center justify-center gap-2">
                   <button
                     onClick={() => setBlueprintModal(plan)}
-                    className="bg-white text-navy-primary font-body text-xs font-bold tracking-widest uppercase px-5 py-3 rounded shadow-xl flex items-center gap-2 transform translate-y-2 group-hover:translate-y-0 transition-all hover:bg-champagne"
+                    className="flex items-center justify-center gap-2 bg-navy-dark text-white font-body text-xs font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-navy-primary transition-colors shadow-lg rounded-sm transform translate-y-2 group-hover:translate-y-0"
                   >
                     <ZoomIn className="h-4 w-4" />
                     View Blueprint
@@ -177,9 +177,9 @@ export default function FloorPlans({ onSelectUnit }: FloorPlansProps) {
                   onSelectUnit(blueprintModal.type);
                   setBlueprintModal(null);
                 }}
-                className="bg-navy-primary hover:bg-navy-light text-white font-bold tracking-widest uppercase px-6 py-3 rounded shadow"
+                className="flex items-center justify-center gap-2 bg-navy-primary text-white font-body text-xs font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-navy-dark transition-colors shadow-lg rounded-sm"
               >
-                Book Walkthrough
+                Request Information
               </button>
             </div>
           </div>

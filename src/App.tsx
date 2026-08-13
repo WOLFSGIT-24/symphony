@@ -14,6 +14,7 @@ import Footer from "./components/Footer";
 import Gallery from "./components/Gallery";
 import PrivacyPolicyModal from "./components/PrivacyPolicyModal";
 import TermsModal from "./components/TermsModal";
+import OfferModal from "./components/OfferModal";
 import { LeadSubmission } from "./types";
 
 const LOCAL_STORAGE_KEY = "symphony_heights_leads";
@@ -24,7 +25,16 @@ export default function App() {
   const [adminOpen, setAdminOpen] = useState(false);
   const [privacyOpen, setPrivacyOpen] = useState(false);
   const [termsOpen, setTermsOpen] = useState(false);
+  const [offerOpen, setOfferOpen] = useState(false);
   const [preselectedUnit, setPreselectedUnit] = useState<string | null>(null);
+
+  // Trigger offer modal after 4 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setOfferOpen(true);
+    }, 4000);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Read initial cache
   useEffect(() => {
@@ -206,6 +216,11 @@ export default function App() {
       <TermsModal 
         isOpen={termsOpen} 
         onClose={() => setTermsOpen(false)} 
+      />
+      <OfferModal
+        isOpen={offerOpen}
+        onClose={() => setOfferOpen(false)}
+        onAddLead={handleAddLead}
       />
     </div>
   );

@@ -277,7 +277,7 @@ will contact you shortly.
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full bg-navy-primary text-white font-body text-xs font-bold tracking-widest uppercase py-4 rounded hover:bg-navy-light transition-all flex items-center justify-center gap-2.5 shadow hover:shadow-lg disabled:opacity-50 mt-4 cursor-pointer"
+                      className="w-full flex items-center justify-center gap-2.5 bg-navy-dark text-white font-body text-xs font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-navy-primary transition-colors shadow-lg rounded-sm disabled:opacity-50 mt-4 cursor-pointer"
                     >
                       {loading ? (
                         <>
@@ -329,7 +329,7 @@ will contact you shortly.
                   <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
                     <button
                       onClick={handleDownloadBrochure}
-                      className="bg-navy-primary hover:bg-navy-light text-white font-body text-xs font-bold tracking-widest uppercase px-6 py-3.5 rounded flex items-center justify-center gap-2 shadow"
+                      className="flex items-center justify-center gap-2 bg-navy-dark text-white font-body text-xs font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-navy-primary transition-colors shadow-lg rounded-sm"
                     >
                       <Download className="h-4 w-4" />
                       DOWNLOAD CATALOG
@@ -337,7 +337,7 @@ will contact you shortly.
 
                     <button
                       onClick={() => setFormSubmitted(false)}
-                      className="bg-navy-primary/5 hover:bg-navy-primary/10 text-navy-primary font-body text-xs font-bold tracking-widest uppercase px-6 py-3.5 rounded"
+                      className="flex items-center justify-center gap-2 bg-transparent border border-navy-primary text-navy-primary font-body text-xs font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-navy-primary hover:text-white transition-colors rounded-sm"
                     >
                       REGISTER ANOTHER
                     </button>

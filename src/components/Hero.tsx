@@ -9,9 +9,9 @@ export default function Hero({ onOpenEnquiry }: HeroProps) {
   return (
     <section
       id="overview"
-      className="relative w-full min-h-screen pt-[72px] sm:pt-[80px] bg-marble flex items-center overflow-hidden"
+      className="relative w-full min-h-0 lg:min-h-screen pt-[72px] sm:pt-[80px] bg-marble flex items-center overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full flex flex-col lg:flex-row items-center gap-12 py-12 lg:py-20 relative z-10">
+      <div className="max-w-7xl mx-auto px-0 md:px-12 w-full flex flex-col lg:flex-row items-center gap-8 lg:gap-12 py-6 lg:py-20 relative z-10">
         
         {/* Left Side: Primary Image */}
         <div className="w-full lg:w-1/2 relative">
@@ -19,40 +19,48 @@ export default function Hero({ onOpenEnquiry }: HeroProps) {
             <img
               src="/hero-bg.png"
               alt="Symphony Heights tower"
-              className="w-full h-[50vh] sm:h-auto sm:aspect-[4/5] object-cover object-bottom"
+              className="w-full h-[35vh] sm:h-auto sm:aspect-[4/5] object-cover object-bottom"
             />
           </div>
         </div>
 
         {/* Right Side: Content */}
-        <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left relative z-20">
+        <div className="w-full lg:w-1/2 flex flex-col items-start text-left relative z-20 px-6 md:px-0">
           
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl text-navy-primary font-bold tracking-tight leading-[1.1] mb-2 animate-fade-in">
-            Elegance <br className="hidden lg:block"/> Thoughtfully Built.
-          </h1>
-          <p className="font-body text-lg sm:text-2xl text-navy-primary/80 mb-6 animate-fade-in delay-100">
-            To Live. To Relax. To Thrive.
-          </p>
-          
-          <div className="font-body text-[10px] sm:text-xs font-bold tracking-[0.2em] text-navy-primary/60 uppercase mb-8 animate-fade-in delay-200">
-            Premium 3 BHK Residences at Hennur, North Bangalore
+          <div className="flex flex-row items-start justify-between w-full gap-4 mb-6">
+            <div className="flex-1">
+              <h1 className="font-display text-[28px] sm:text-5xl md:text-6xl text-navy-primary font-bold tracking-tight leading-[1.1] mb-2 animate-fade-in">
+                Elegance <br className="hidden lg:block"/> Thoughtfully Built.
+              </h1>
+              <p className="font-body text-sm sm:text-2xl text-navy-primary/80 mb-2 animate-fade-in delay-100">
+                To Live. To Relax. To Thrive.
+              </p>
+              <div className="font-body text-[9px] sm:text-xs font-bold tracking-[0.15em] sm:tracking-[0.2em] text-navy-primary/60 uppercase animate-fade-in delay-200">
+                Premium 3 BHK Residences at Hennur, North Bangalore
+              </div>
+            </div>
+            
+            {/* Secondary Small Image (Mobile Right Side) */}
+            <div className="w-[100px] sm:w-[140px] shrink-0 transform rotate-3 bg-white p-1 sm:p-2 shadow-lg mt-2 lg:hidden xl:block">
+              <img src="/intimate-scale.jpg" alt="Lifestyle" className="w-full aspect-[3/4] object-cover" />
+            </div>
           </div>
 
           {/* Pricing Box */}
-          <div className="bg-navy-primary text-white p-6 sm:p-8 relative transform hover:-translate-y-1 transition-transform duration-300 w-full max-w-md shadow-2xl animate-slide-up delay-300 mb-8 rounded-sm">
-            <div className="text-[10px] sm:text-xs text-champagne uppercase tracking-widest font-bold mb-2 flex items-center gap-2 justify-center lg:justify-start">
-              <span className="h-[1px] w-6 bg-champagne"></span>
+          <div className="mt-4 sm:mt-6 bg-navy-primary text-white p-2 sm:p-6 relative transform hover:-translate-y-1 transition-transform duration-300 w-[95%] max-w-[260px] sm:w-full sm:max-w-sm shadow-2xl animate-slide-up delay-300 mb-8 rounded-sm">
+            <div className="text-[7px] sm:text-[10px] text-champagne uppercase tracking-widest font-bold mb-0.5 flex items-center gap-1 justify-center sm:justify-start">
+              <span className="h-[1px] w-3 sm:w-6 bg-champagne"></span>
               Launching
             </div>
-            <div className="font-display text-2xl sm:text-3xl font-bold mb-2 text-champagne">
+            <div className="font-display text-base sm:text-2xl font-bold mb-1.5 text-center sm:text-left text-champagne leading-tight">
               Symphony Heights
             </div>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 sm:gap-4 mt-5 border-t border-white/10 pt-4">
-              <div className="font-body text-sm font-medium tracking-wider text-white/80 uppercase">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-0.5 sm:gap-4 mt-1.5 border-t border-white/10 pt-1.5">
+              <div className="font-body text-[8px] sm:text-xs font-medium tracking-wider text-white/80 uppercase text-center sm:text-left">
                 3 Bed Homes
               </div>
-              <div className="text-center sm:text-right">
-                <div className="font-display text-2xl font-bold">₹1.85 Cr onwards*</div>
+              <div className="text-center sm:text-right mt-0.5 sm:mt-0">
+                <div className="font-display text-sm sm:text-xl font-bold tracking-wide">₹1.85 Cr onwards*</div>
               </div>
             </div>
           </div>

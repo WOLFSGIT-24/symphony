@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, Landmark } from "lucide-react";
+import { Menu, X, Landmark, Phone } from "lucide-react";
 
 interface HeaderProps {
   onOpenBooking: () => void;
@@ -17,7 +17,7 @@ export default function Header({ onOpenBooking, onToggleAdmin, isAdminActive }: 
       setIsScrolled(window.scrollY > 50);
 
       // Simple active link determination
-      const sections = ["overview", "amenities", "location", "floor-plans", "snapshots"];
+      const sections = ["overview", "floor-plans", "amenities", "location", "snapshots"];
       for (const section of sections) {
         const el = document.getElementById(section);
         if (el) {
@@ -80,9 +80,9 @@ export default function Header({ onOpenBooking, onToggleAdmin, isAdminActive }: 
           <nav className="hidden lg:flex items-center gap-8">
             {[
               { label: "OVERVIEW", id: "overview" },
+              { label: "FLOOR PLANS", id: "floor-plans" },
               { label: "AMENITIES", id: "amenities" },
               { label: "LOCATION", id: "location" },
-              { label: "FLOOR PLANS", id: "floor-plans" },
             ].map((link) => (
               <a
                 key={link.id}
@@ -109,22 +109,30 @@ export default function Header({ onOpenBooking, onToggleAdmin, isAdminActive }: 
           <div className="flex items-center gap-4">
             <button
               onClick={onOpenBooking}
-              className={`hidden md:block px-5 py-2.5 rounded font-body text-xs font-bold tracking-wider uppercase transition-all duration-300 hover:scale-[1.02] shadow-sm hover:shadow-md bg-navy-primary text-white hover:bg-navy-dark`}
+              className="hidden md:block bg-navy-dark text-white font-body text-xs font-bold tracking-widest uppercase px-6 py-3.5 hover:bg-navy-primary transition-colors shadow-lg rounded-sm"
             >
               BOOK SITE VISIT
             </button>
 
 
 
+            {/* Mobile Call Button */}
+            <a
+              href="tel:08047359991"
+              className="lg:hidden flex items-center justify-center w-10 h-10 rounded-full border border-navy-primary/20 text-navy-primary focus:outline-none hover:bg-navy-primary/5 transition-colors"
+            >
+              <Phone className="h-4 w-4" />
+            </a>
+
             {/* Hamburger Mobile Menu */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-1.5 focus:outline-none"
+              className="lg:hidden flex items-center justify-center w-10 h-10 rounded-full border border-navy-primary/20 text-navy-primary focus:outline-none hover:bg-navy-primary/5 transition-colors"
             >
               {mobileMenuOpen ? (
-                <X className="h-6 w-6 text-navy-primary" />
+                <X className="h-5 w-5" />
               ) : (
-                <Menu className="h-6 w-6 text-navy-primary" />
+                <Menu className="h-5 w-5" />
               )}
             </button>
           </div>
@@ -136,9 +144,9 @@ export default function Header({ onOpenBooking, onToggleAdmin, isAdminActive }: 
         <div className="fixed inset-0 top-20 bg-navy-dark/95 backdrop-blur-lg z-30 lg:hidden flex flex-col p-8 space-y-6 animate-fade-in">
           {[
             { label: "OVERVIEW", id: "overview" },
+            { label: "FLOOR PLANS", id: "floor-plans" },
             { label: "AMENITIES", id: "amenities" },
             { label: "LOCATION", id: "location" },
-            { label: "FLOOR PLANS", id: "floor-plans" },
           ].map((link) => (
             <a
               key={link.id}
@@ -155,7 +163,7 @@ export default function Header({ onOpenBooking, onToggleAdmin, isAdminActive }: 
               setMobileMenuOpen(false);
               onOpenBooking();
             }}
-            className="w-full bg-gold text-navy-primary font-body font-bold text-xs tracking-wider uppercase py-4 rounded transition-all shadow-lg mt-8"
+            className="w-full flex items-center justify-center gap-2 bg-navy-dark text-white font-body text-xs font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-navy-primary transition-colors shadow-lg rounded-sm mt-8"
           >
             BOOK SITE VISIT
           </button>

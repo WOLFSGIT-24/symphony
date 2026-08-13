@@ -260,7 +260,7 @@ export default function BookingModal({
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-navy-primary hover:bg-navy-light text-white font-body text-xs font-bold tracking-widest uppercase py-4 rounded transition-all flex items-center justify-center gap-2 cursor-pointer shadow hover:shadow-lg disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-2 bg-navy-dark text-white font-body text-xs font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-navy-primary transition-colors shadow-lg rounded-sm disabled:opacity-50 cursor-pointer"
               >
                 {loading ? (
                   <>
@@ -298,7 +298,7 @@ export default function BookingModal({
 
               <button
                 onClick={onClose}
-                className="bg-navy-primary hover:bg-navy-light text-white font-body text-xs font-bold tracking-widest uppercase px-6 py-3 rounded shadow"
+                className="flex items-center justify-center gap-2 bg-navy-dark text-white font-body text-xs font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-navy-primary transition-colors shadow-lg rounded-sm"
               >
                 Return to Site
               </button>

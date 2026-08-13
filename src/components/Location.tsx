@@ -119,7 +119,7 @@ export default function Location() {
                   const target = document.getElementById("lead-capture-section");
                   if (target) target.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="bg-navy-primary text-white hover:bg-navy-light text-xs font-bold tracking-widest uppercase px-6 py-4 rounded shadow-sm transition-colors"
+                className="bg-navy-dark text-white font-body text-xs font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-navy-primary transition-colors shadow-lg rounded-sm"
               >
                 Explore Location Advantages
               </button>
