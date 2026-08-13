@@ -94,7 +94,7 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-marble text-charcoal pb-20 md:pb-0">
+    <div className="relative min-h-screen bg-marble text-charcoal pb-20 md:pb-0 overflow-x-hidden w-full">
       {/* Upper Navigation Header */}
       <Header
         onOpenBooking={() => {
@@ -154,8 +154,8 @@ export default function App() {
       {/* Fixed Mobile Bottom CTA Bar */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-[0_-10px_30px_rgba(0,0,0,0.1)] z-40 flex items-center p-3 gap-3 border-t border-navy-primary/10">
         <a 
-          href="tel:+919876543210" 
-          className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded bg-navy-primary/5 text-navy-primary font-bold text-xs uppercase tracking-wider"
+          href="tel:08047359991" 
+          className="flex-1 flex items-center justify-center gap-2 bg-navy-dark text-white font-body text-xs font-bold uppercase tracking-wider py-3.5 rounded shadow-sm"
         >
           <Phone className="h-4 w-4" />
           Call

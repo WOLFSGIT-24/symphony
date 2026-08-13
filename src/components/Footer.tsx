@@ -58,14 +58,26 @@ export default function Footer({ onOpenPrivacy, onOpenTerms }: FooterProps = {})
             </div>
           </div>
 
-          {/* Corporate Address */}
-          <div className="md:col-span-4 space-y-4">
-            <h4 className="font-display text-sm font-bold text-champagne uppercase tracking-wider">
-              Corporate Address
-            </h4>
-            <div className="font-body text-xs sm:text-sm text-on-primary-container space-y-1.5 leading-relaxed">
-              <p>2nd Floor, Above Axis Bank, #43/2, Whitefield Main</p>
-              <p>Road, Bengaluru, Karnataka 560066</p>
+          {/* Corporate Address & Contact */}
+          <div className="md:col-span-4 space-y-6">
+            <div className="space-y-4">
+              <h4 className="font-display text-sm font-bold text-champagne uppercase tracking-wider">
+                Corporate Address
+              </h4>
+              <div className="font-body text-xs sm:text-sm text-on-primary-container space-y-1.5 leading-relaxed">
+                <p>2nd Floor, Above Axis Bank, #43/2, Whitefield Main</p>
+                <p>Road, Bengaluru, Karnataka 560066</p>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <h4 className="font-display text-sm font-bold text-champagne uppercase tracking-wider">
+                Contact Us
+              </h4>
+              <div className="font-body text-xs sm:text-sm text-on-primary-container space-y-1.5 leading-relaxed">
+                <p>Phone: <a href="tel:08047359991" className="hover:text-white transition-colors">080 4735 9991</a></p>
+                <p>Email: <a href="mailto:info@symphonyheights.com" className="hover:text-white transition-colors">info@symphonyheights.com</a></p>
+              </div>
             </div>
           </div>
 

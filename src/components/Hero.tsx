@@ -9,24 +9,22 @@ export default function Hero({ onOpenEnquiry }: HeroProps) {
   return (
     <section
       id="overview"
-      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      className="relative w-full flex flex-col sm:flex-row sm:min-h-screen sm:items-center sm:justify-center overflow-hidden bg-navy-dark pt-[72px] sm:pt-0"
     >
       {/* Immersive background image with cinematic gradient */}
-      <div className="absolute inset-0 w-full h-full bg-navy-dark">
+      <div className="relative sm:absolute sm:inset-0 w-full h-[55vh] sm:h-full bg-navy-dark shrink-0">
         <img
           src="/hero-bg.png"
           alt="Symphony Heights twilight high-rise"
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover object-center"
         />
-        {/* Soft, professional gradient layer */}
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-dark/45 via-navy-primary/20 to-navy-dark/65" />
-        {/* Mobile-only dark overlay for text readability */}
-        <div className="absolute inset-0 bg-navy-dark/25 sm:hidden" />
+        {/* Soft, professional gradient layer (Desktop Only) */}
+        <div className="hidden sm:block absolute inset-0 bg-gradient-to-b from-navy-dark/45 via-navy-primary/20 to-navy-dark/65" />
       </div>
 
       {/* Hero Central Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-12 py-12 sm:py-20 flex flex-col items-center text-center">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 md:px-12 py-10 sm:py-20 flex flex-col items-center text-center bg-navy-dark sm:bg-transparent">
         {/* Editorial Eyebrow */}
         <div className="inline-flex items-center gap-2 mb-4 sm:mb-6 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm animate-fade-in">
           <span className="h-1.5 w-1.5 rounded-full bg-gold animate-ping" />

@@ -131,7 +131,7 @@ export default function PrivacyPolicyModal({ isOpen, onClose }: PrivacyPolicyMod
             <p>For any privacy-related queries, please reach out to the Symphony Heights sales team:</p>
             <ul className="list-none space-y-1 mt-2">
               <li><strong>Project:</strong> Symphony Heights</li>
-              <li><strong>Phone:</strong> +91 98765 43210</li>
+              <li><strong>Phone:</strong> 080 4735 9991</li>
               <li><strong>Email:</strong> info@symphonyheights.com</li>
               <li><strong>Location:</strong> Hennur Outer Ring Road Corner, North Bangalore</li>
               <li><strong>RERA Reg. No.:</strong> PRM/KA/RERA/1251/446/PR/250925/008120</li>
