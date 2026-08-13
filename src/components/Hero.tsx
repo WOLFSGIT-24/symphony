@@ -34,7 +34,7 @@ export default function Hero({ onOpenEnquiry }: HeroProps) {
         </div>
 
         {/* Elegant Display Title & Subheadline */}
-        <h1 className="font-display text-3xl sm:text-5xl md:text-6xl text-white font-bold tracking-tight leading-[1.15] max-w-4xl mb-4 sm:mb-6 animate-slide-up">
+        <h1 className="font-display text-3xl sm:text-5xl md:text-6xl text-white font-normal tracking-tight leading-[1.15] max-w-4xl mb-4 sm:mb-6 animate-slide-up">
           Your First Premium Home Should Never Be a Compromise.
         </h1>
         <p className="font-body text-[13px] sm:text-sm md:text-base text-white/95 font-medium drop-shadow-md max-w-2xl mb-6 sm:mb-8 animate-fade-in leading-relaxed text-center">
