@@ -2,7 +2,12 @@ import React from "react";
 import { Landmark, ShieldAlert, ArrowUpCircle } from "lucide-react";
 import { projectSnapshot } from "../data";
 
-export default function Footer() {
+interface FooterProps {
+  onOpenPrivacy?: () => void;
+  onOpenTerms?: () => void;
+}
+
+export default function Footer({ onOpenPrivacy, onOpenTerms }: FooterProps = {}) {
   const handleScrollTop = () => {
     window.scrollTo({
       top: 0,
@@ -33,30 +38,35 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Location & Contact Grid */}
-          <div className="md:col-span-4 space-y-4">
+          {/* Site Address */}
+          <div className="md:col-span-3 space-y-4">
             <h4 className="font-display text-sm font-bold text-champagne uppercase tracking-wider">
-              Enclave Location
+              Site Address
             </h4>
-            <div className="font-body text-xs sm:text-sm text-on-primary-container space-y-1.5">
-              <p className="text-white font-medium">Hennur Outer Ring Road Corner</p>
-              <p>North Bangalore, Karnataka</p>
-              <p>India - 560077</p>
+            <div className="font-body text-xs sm:text-sm text-on-primary-container space-y-1.5 leading-relaxed">
+              <p>Hennur Bagalur Road, Doddagubbi Main Rd,</p>
+              <p>Bengaluru, 560077</p>
             </div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded text-[10px] text-gold uppercase tracking-wider font-bold">
-              <Landmark className="h-3 w-3" />
-              RERA Approved
+            <div className="pt-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded text-[10px] text-gold uppercase tracking-wider font-bold mb-1">
+                <Landmark className="h-3 w-3" />
+                RERA Approved
+              </div>
+              <p className="font-body text-[10px] text-white/50 tracking-wider">
+                PRM/KA/RERA/1251/446/PR/250925/008120
+              </p>
             </div>
           </div>
 
-          {/* Legacy & Developer Info */}
-          <div className="md:col-span-3 space-y-4">
+          {/* Corporate Address */}
+          <div className="md:col-span-4 space-y-4">
             <h4 className="font-display text-sm font-bold text-champagne uppercase tracking-wider">
-              The Legacy
+              Corporate Address
             </h4>
-            <p className="font-body text-xs sm:text-sm text-on-primary-container leading-relaxed">
-              A landmark residential development engineered by <strong>{projectSnapshot.developer}</strong>. Redefining high-end regional living through meticulous construction and deliberate visual design.
-            </p>
+            <div className="font-body text-xs sm:text-sm text-on-primary-container space-y-1.5 leading-relaxed">
+              <p>2nd Floor, Above Axis Bank, #43/2, Whitefield Main</p>
+              <p>Road, Bengaluru, Karnataka 560066</p>
+            </div>
           </div>
 
         </div>
@@ -73,13 +83,25 @@ export default function Footer() {
           </div>
 
           <div className="flex items-center gap-6 text-[10px] font-bold text-champagne uppercase tracking-wider">
-            <a href="#privacy" className="hover:text-white transition-colors">
+            <button 
+              onClick={(e) => {
+                e.preventDefault();
+                onOpenPrivacy?.();
+              }}
+              className="hover:text-white transition-colors cursor-pointer uppercase font-bold text-[10px]"
+            >
               Privacy Policy
-            </a>
+            </button>
             <span className="text-white/20">|</span>
-            <a href="#terms" className="hover:text-white transition-colors">
+            <button 
+              onClick={(e) => {
+                e.preventDefault();
+                onOpenTerms?.();
+              }}
+              className="hover:text-white transition-colors cursor-pointer uppercase font-bold text-[10px]"
+            >
               Terms & Conditions
-            </a>
+            </button>
             <button
               onClick={handleScrollTop}
               title="Scroll back to top"

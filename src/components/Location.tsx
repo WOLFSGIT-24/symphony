@@ -44,9 +44,7 @@ export default function Location() {
               Everything That Matters. In One Address.
             </h2>
 
-            <p className="font-body text-base text-gray-text leading-relaxed">
-              Buying a premium home isn't just about the apartment. It's about choosing a location that makes everyday life easier and continues to grow in value over time. Symphony Heights brings together everything today's homebuyers look for—excellent connectivity, established social infrastructure, boutique community living and long-term appreciation potential.
-            </p>
+
 
             {/* Commute Mode Selector Panel */}
             <div className="bg-white/80 p-1.5 rounded-lg border border-navy-primary/10 shadow-sm flex items-center justify-between gap-1">
@@ -112,25 +110,7 @@ export default function Location() {
               })}
             </div>
 
-            {/* Additional Location Advantages Checklist */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-              {[
-                "Bharathiya City Tech Park",
-                "Embassy Manyata Business Park",
-                "Leading Schools",
-                "Reputed Hospitals",
-                "Restaurants & Daily Conveniences"
-              ].map((item, idx) => (
-                <div key={idx} className="flex items-center gap-2 text-sm font-body text-charcoal/80">
-                  <div className="h-4 w-4 rounded-full bg-gold/20 flex items-center justify-center shrink-0">
-                    <svg className="w-2.5 h-2.5 text-navy-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
+
             
             {/* CTA Button */}
             <div className="pt-2">
@@ -155,10 +135,23 @@ export default function Location() {
           </div>
 
           <div className="lg:col-span-7 rounded-xl shadow-2xl overflow-hidden relative border border-navy-primary/10 flex items-center justify-center bg-[#F4EDE5] p-6 sm:p-10 lg:p-12">
+            
+            {/* Address Overlay */}
+            <div className="absolute top-4 left-4 sm:top-6 sm:left-6 bg-white/95 backdrop-blur p-4 sm:p-5 rounded-lg shadow-lg border border-navy-primary/10 z-10">
+              <h4 className="font-display text-xs font-bold text-navy-primary uppercase tracking-wider mb-2">
+                Enclave Location
+              </h4>
+              <div className="font-body text-xs sm:text-sm text-charcoal space-y-0.5">
+                <p className="font-bold text-navy-primary">Hennur Outer Ring Road Corner</p>
+                <p>North Bangalore, Karnataka</p>
+                <p>India - 560077</p>
+              </div>
+            </div>
+
             <img 
               src="/map.png"
               alt="Location Map"
-              className="w-full max-w-lg lg:max-w-xl h-auto object-contain drop-shadow-sm"
+              className="w-full max-w-lg lg:max-w-xl h-auto object-contain drop-shadow-sm mt-16 sm:mt-0"
             />
           </div>
 

@@ -1,15 +1,11 @@
 import React, { useState } from "react";
-import { Check, ZoomIn, Heart, Sparkles } from "lucide-react";
+import { Check, Heart, Sparkles } from "lucide-react";
 import { amenitiesData } from "../data";
 import { AmenityItem } from "../types";
+import LevelCarousel from "./LevelCarousel";
 
 export default function Amenities() {
   const [activeTier, setActiveTier] = useState<string | null>(null);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
-  const handleImageClick = (url: string) => {
-    setSelectedImage(url);
-  };
 
   return (
     <section id="amenities" className="w-full py-28 bg-navy-primary text-white relative">
@@ -47,25 +43,10 @@ export default function Amenities() {
                     isEven ? "order-1" : "order-1 lg:order-2"
                   }`}
                 >
-                  <div className="relative overflow-hidden rounded-lg shadow-[0_15px_50px_rgba(0,0,0,0.4)] bg-navy-dark">
-                    {/* Hover state overlay */}
-                    <div className="absolute inset-0 bg-navy-dark/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 flex items-center justify-center">
-                      <button
-                        onClick={() => handleImageClick(tier.imageUrl)}
-                        className="bg-white/10 hover:bg-white/20 text-white border border-white/20 p-3 rounded-full backdrop-blur-md transition-all scale-90 group-hover:scale-100 flex items-center gap-2 font-body text-xs font-semibold tracking-wider uppercase"
-                      >
-                        <ZoomIn className="h-4.5 w-4.5" />
-                        Explore Level
-                      </button>
-                    </div>
-
-                    <img
-                      src={tier.imageUrl}
-                      alt={tier.title}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-[400px] sm:h-[480px] object-cover rounded-lg transform transition-transform duration-700 group-hover:scale-103"
-                    />
-                  </div>
+                  <LevelCarousel 
+                    images={tier.images || [tier.imageUrl]} 
+                    title={tier.title} 
+                  />
 
                   {/* Absolute Level Indicators */}
                   <div
@@ -146,31 +127,6 @@ export default function Amenities() {
         </div>
       </div>
 
-      {/* Panoramic Zoom Lightbox Modal */}
-      {selectedImage && (
-        <div
-          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4 animate-fade-in"
-          onClick={() => setSelectedImage(null)}
-        >
-          <div className="relative max-w-5xl w-full flex flex-col gap-4">
-            <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute -top-12 right-0 text-white font-body text-xs font-bold tracking-widest uppercase flex items-center gap-1 bg-white/10 hover:bg-white/20 px-3.5 py-1.5 rounded-full backdrop-blur-sm transition-all focus:outline-none"
-            >
-              Close Overlay ✕
-            </button>
-            <img
-              src={selectedImage}
-              alt="High resolution amenity layout"
-              referrerPolicy="no-referrer"
-              className="w-full h-auto max-h-[80vh] object-contain rounded-lg shadow-2xl"
-            />
-            <p className="text-center text-white/60 font-body text-xs italic">
-              Artist's Impression — Subject to final structural verification.
-            </p>
-          </div>
-        </div>
-      )}
     </section>
   );
 }

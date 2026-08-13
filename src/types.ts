@@ -18,6 +18,7 @@ export interface AmenityItem {
   levelNumber: string;
   description: string;
   imageUrl: string;
+  images?: string[];
   bullets: string[];
 }
 

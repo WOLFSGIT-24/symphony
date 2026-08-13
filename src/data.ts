@@ -7,7 +7,8 @@ export const amenitiesData: AmenityItem[] = [
     level: "Ground",
     levelNumber: "01",
     description: "Interactive spaces where children play, neighbours connect and families spend quality time together.",
-    imageUrl: "/ground.jpg",
+    imageUrl: "/ground2.jpg",
+    images: ["/ground2.jpg", "/ground3.jpg", "/ground4.jpg", "/pet-park.jpg"],
     bullets: [
       "Double-height Lobby with custom Italian marble finishing",
       "Reflective Water Cascades & signature arrival sculpture",
@@ -21,7 +22,8 @@ export const amenitiesData: AmenityItem[] = [
     level: "Podium",
     levelNumber: "02",
     description: "Clubhouse, yoga deck, wellness spaces and community zones designed for relaxation, fitness and celebrations.",
-    imageUrl: "/podium.jpg",
+    imageUrl: "/podium2.jpg",
+    images: ["/podium2.jpg", "/podium3.jpg", "/podium4.jpg"],
     bullets: [
       "High-performance Gymnasium with premium equipment",
       "Zen Yoga & Meditation Studio with acoustic padding",
@@ -35,7 +37,8 @@ export const amenitiesData: AmenityItem[] = [
     level: "Rooftop",
     levelNumber: "03",
     description: "Recreation, leisure spaces and panoramic skyline views that elevate everyday living.",
-    imageUrl: "/roof.jpg",
+    imageUrl: "/roof2.jpg",
+    images: ["/roof2.jpg", "/roof3.jpg", "/roof4.jpg"],
     bullets: [
       "Infinity Edge lap pool overlooking the city skyline",
       "Sunset Lounge & open-air Barbecue deck",

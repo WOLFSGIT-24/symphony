@@ -3,6 +3,7 @@ import { Phone } from "lucide-react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import IntimateScale from "./components/IntimateScale";
+import ProjectHighlights from "./components/ProjectHighlights";
 import Amenities from "./components/Amenities";
 import Location from "./components/Location";
 import FloorPlans from "./components/FloorPlans";
@@ -11,6 +12,8 @@ import BookingModal from "./components/BookingModal";
 import AdminDashboard from "./components/AdminDashboard";
 import Footer from "./components/Footer";
 import Gallery from "./components/Gallery";
+import PrivacyPolicyModal from "./components/PrivacyPolicyModal";
+import TermsModal from "./components/TermsModal";
 import { LeadSubmission } from "./types";
 
 const LOCAL_STORAGE_KEY = "symphony_heights_leads";
@@ -19,6 +22,8 @@ export default function App() {
   const [leads, setLeads] = useState<LeadSubmission[]>([]);
   const [bookingOpen, setBookingOpen] = useState(false);
   const [adminOpen, setAdminOpen] = useState(false);
+  const [privacyOpen, setPrivacyOpen] = useState(false);
+  const [termsOpen, setTermsOpen] = useState(false);
   const [preselectedUnit, setPreselectedUnit] = useState<string | null>(null);
 
   // Read initial cache
@@ -104,6 +109,9 @@ export default function App() {
       {/* Hero Entrance Banner */}
       <Hero onOpenEnquiry={handleHeroEnquiry} />
 
+      {/* Project Pricing and Highlights */}
+      <ProjectHighlights />
+
       {/* Property Privacy and Scale Section */}
       <IntimateScale />
 
@@ -184,7 +192,20 @@ export default function App() {
       </a>
 
       {/* Footer Credentials Branding */}
-      <Footer />
+      <Footer 
+        onOpenPrivacy={() => setPrivacyOpen(true)} 
+        onOpenTerms={() => setTermsOpen(true)}
+      />
+
+      {/* Legal Modals */}
+      <PrivacyPolicyModal 
+        isOpen={privacyOpen} 
+        onClose={() => setPrivacyOpen(false)} 
+      />
+      <TermsModal 
+        isOpen={termsOpen} 
+        onClose={() => setTermsOpen(false)} 
+      />
     </div>
   );
 }

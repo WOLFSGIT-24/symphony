@@ -114,9 +114,7 @@ will contact you shortly.
             <h2 className="font-display text-3xl sm:text-4xl text-champagne font-semibold leading-tight">
               Your Next Chapter Begins Here.
             </h2>
-            <p className="font-body text-base text-on-primary-container max-w-md leading-relaxed">
-              A home is one of the most important decisions a family makes. Symphony Heights brings together thoughtful planning, boutique living, excellent connectivity and a location that continues to grow with time. If you're looking for a premium home in North Bangalore, this is an address worth experiencing in person.
-            </p>
+
 
             <div className="bg-navy-primary/60 p-6 sm:p-8 rounded-lg space-y-5 border border-white/5 shadow-2xl">
               <h4 className="font-display text-lg font-bold text-champagne tracking-wide flex items-center gap-2">
@@ -134,7 +132,7 @@ will contact you shortly.
                   <span className="font-semibold text-white">Only 128 Residences</span>
                 </li>
                 <li className="flex justify-between border-b border-white/5 pb-2.5">
-                  <span className="font-semibold text-white">Hennur, North Bangalore</span>
+                  <span className="font-semibold text-white">Hennur Outer Ring Road Corner, North Bangalore</span>
                 </li>
                 <li className="flex justify-between border-b border-white/5 pb-2.5">
                   <span className="font-semibold text-white">Exclusive 25:25:25:25 Payment Plan</span>
@@ -240,22 +238,6 @@ will contact you shortly.
                         </select>
                       </div>
 
-                      {/* Walkthrough appointment scheduler */}
-                      <div>
-                        <label className="text-[10px] font-bold text-navy-primary uppercase tracking-wider block mb-2">
-                          Opt-In Site Visit (Optional)
-                        </label>
-                        <div className="relative">
-                          <input
-                            type="date"
-                            id="preferredDate"
-                            value={formData.preferredDate}
-                            onChange={handleChange}
-                            min={new Date().toISOString().split("T")[0]}
-                            className="w-full bg-gray-50 border border-gray-200 text-xs sm:text-sm font-body px-3.5 py-2.5 rounded outline-none focus:border-navy-primary"
-                          />
-                        </div>
-                      </div>
                     </div>
 
                     <button
