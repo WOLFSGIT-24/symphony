@@ -6,18 +6,6 @@ import { CommuteDestination } from "../types";
 type CommuteMode = "driving" | "transit" | "walking";
 
 export default function Location() {
-  const [commuteMode, setCommuteMode] = useState<CommuteMode>("driving");
-
-  const getModeLabel = (mode: CommuteMode) => {
-    switch (mode) {
-      case "driving":
-        return "By Car / Cab";
-      case "transit":
-        return "Metro / Bus";
-      case "walking":
-        return "Foot Commute";
-    }
-  };
 
   const renderMap = () => (
     <iframe
@@ -34,19 +22,19 @@ export default function Location() {
   );
 
   return (
-    <section id="location" className="w-full py-20 bg-marble text-charcoal">
+    <section id="location" className="w-full py-12 md:py-16 bg-marble text-charcoal">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
           {/* Informational Connectivity details */}
-          <div className="lg:col-span-5 space-y-4">
+          <div className="lg:col-span-5 space-y-4 text-center lg:text-left">
             <span className="font-body text-xs font-bold text-navy-primary uppercase tracking-[0.25em] block">
               Prime Location
             </span>
             <h2 className="font-display text-3xl sm:text-4xl text-navy-primary font-semibold leading-tight">
               Everything That Matters. In One Address.
             </h2>
-            <div className="h-[2px] w-16 bg-navy-primary mb-6" />
+            <div className="h-[2px] w-16 bg-navy-primary mx-auto lg:mx-0 mb-6" />
 
             {/* Mobile Only Google Map */}
             <div className="lg:hidden w-full h-[300px] sm:h-[380px] rounded-xl overflow-hidden shadow-xl border border-navy-primary/10 my-4">
@@ -55,37 +43,15 @@ export default function Location() {
 
 
 
-            {/* Commute Mode Selector Panel */}
-            <div className="bg-white/80 p-1.5 rounded-lg border border-navy-primary/10 shadow-sm flex items-center justify-between gap-1">
-              {[
-                { id: "driving", icon: "🚗", label: "Drive" },
-                { id: "transit", icon: "🚇", label: "Transit" },
-                { id: "walking", icon: "🚶", label: "Walk" },
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setMockCommuteMode(tab.id as CommuteMode)}
-                  className={`flex-1 py-2.5 rounded font-body text-xs font-bold tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 ${
-                    commuteMode === tab.id
-                      ? "bg-navy-primary text-white shadow-sm"
-                      : "text-gray-text hover:text-navy-primary hover:bg-navy-primary/5"
-                  }`}
-                >
-                  <span>{tab.icon}</span>
-                  <span className="hidden sm:inline">{tab.label}</span>
-                </button>
-              ))}
-            </div>
-
-            {/* Destination Hub List with Dynamic Times */}
-            <div className="space-y-4">
+            {/* Destination Hub List with Driving Times */}
+            <div className="space-y-4 pt-2">
               <div className="flex items-center gap-2 text-xs font-bold text-navy-primary uppercase tracking-wider mb-2">
                 <Navigation className="h-3.5 w-3.5 text-bronze animate-pulse" />
-                <span>Estimated Commute Times ({getModeLabel(commuteMode)})</span>
+                <span>Estimated Commute Times</span>
               </div>
 
               {locationsData.map((dest: CommuteDestination) => {
-                const duration = dest.times[commuteMode];
+                const duration = dest.times.driving;
                 return (
                   <div
                     key={dest.id}
@@ -153,7 +119,4 @@ export default function Location() {
     </section>
   );
 
-  function setMockCommuteMode(mode: CommuteMode) {
-    setCommuteMode(mode);
-  }
 }

@@ -3,10 +3,11 @@ import { Phone } from "lucide-react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import IntimateScale from "./components/IntimateScale";
-import ProjectHighlights from "./components/ProjectHighlights";
+
 import Amenities from "./components/Amenities";
 import Location from "./components/Location";
 import FloorPlans from "./components/FloorPlans";
+import MasterPlan from "./components/MasterPlan";
 import BrochureForm from "./components/BrochureForm";
 import BookingModal from "./components/BookingModal";
 import AdminDashboard from "./components/AdminDashboard";
@@ -29,6 +30,13 @@ export default function App() {
   const [offerOpen, setOfferOpen] = useState(false);
   const [preselectedUnit, setPreselectedUnit] = useState<string | null>(null);
   const [downloadModalOpen, setDownloadModalOpen] = useState(false);
+  const [floorPlansUnlocked, setFloorPlansUnlocked] = useState(() => {
+    try {
+      return localStorage.getItem("floor_plans_unlocked") === "true";
+    } catch {
+      return false;
+    }
+  });
 
   // Trigger offer modal after 4 seconds
   useEffect(() => {
@@ -73,6 +81,12 @@ export default function App() {
     };
     const updated = [newLead, ...leads];
     saveLeadsToCache(updated);
+    try {
+      localStorage.setItem("floor_plans_unlocked", "true");
+    } catch (e) {
+      console.error(e);
+    }
+    setFloorPlansUnlocked(true);
   };
 
   const handleRequestDownload = () => {
@@ -125,30 +139,36 @@ export default function App() {
       {/* Hero Entrance Banner */}
       <Hero onOpenEnquiry={handleHeroEnquiry} onRequestDownload={handleRequestDownload} />
 
-      {/* Project Pricing and Highlights */}
-      <ProjectHighlights onRequestDownload={handleRequestDownload} />
+
 
       {/* Property Privacy and Scale Section */}
       <IntimateScale onRequestDownload={handleRequestDownload} />
 
-      {/* Interactive Floor Drafting Plans */}
-      <FloorPlans onSelectUnit={handleSelectUnitType} />
+      {/* Architectural Master Plan */}
+      <MasterPlan onSelectUnit={handleSelectUnitType} />
 
       {/* Stacked Amenities Presentation */}
       <Amenities />
 
+      {/* Interactive Floor Drafting Plans */}
+      <FloorPlans 
+        onSelectUnit={handleSelectUnitType} 
+        isUnlocked={floorPlansUnlocked}
+        onUnlockRequest={() => setBookingOpen(true)}
+      />
+
       {/* Location Connectivity Grid */}
       <Location />
 
+
+      {/* Gallery Section */}
+      <Gallery />
 
       {/* Brochure / Intake Form Section */}
       <BrochureForm 
         onAddLead={handleAddLead} 
         preselectedUnit={preselectedUnit} 
       />
-
-      {/* Gallery Section */}
-      <Gallery />
 
       {/* Booking Site Walkthrough Modal Dialog */}
       <BookingModal
@@ -182,7 +202,7 @@ export default function App() {
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 flex shadow-[0_-10px_30px_rgba(0,0,0,0.15)]">
         <a 
           href="tel:08047359991" 
-          className="flex-1 flex items-center justify-center gap-2 bg-navy-primary text-white font-body text-[11px] font-extrabold uppercase tracking-[0.15em] py-4 transition-colors hover:bg-navy-dark border-r border-white/20"
+          className="flex-1 flex items-center justify-center gap-2 bg-navy-primary text-white font-body text-[13px] font-extrabold uppercase tracking-[0.15em] py-4 transition-colors hover:bg-navy-dark border-r border-white/20"
         >
           <Phone className="h-4 w-4 fill-white" />
           Call Now
@@ -193,7 +213,7 @@ export default function App() {
             const target = document.getElementById("lead-capture-section");
             if (target) target.scrollIntoView({ behavior: "smooth" });
           }}
-          className="flex-1 flex items-center justify-center bg-navy-primary text-white font-body text-[11px] font-extrabold uppercase tracking-[0.15em] py-4 transition-colors hover:bg-navy-dark"
+          className="flex-1 flex items-center justify-center bg-navy-primary text-white font-body text-[13px] font-extrabold uppercase tracking-[0.15em] py-4 transition-colors hover:bg-navy-dark"
         >
           Enquire Now
         </button>

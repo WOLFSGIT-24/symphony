@@ -75,10 +75,8 @@ export default function BookingModal({
         fullName: formData.fullName,
         email: formData.email,
         phone: formData.phone,
-        preferredDate: formData.preferredDate || undefined,
-        preferredTime: formData.preferredTime || undefined,
-        source: "site_visit_form",
-        notes: `Unit Choice: ${formData.unitType}. Customer Note: ${formData.notes}`,
+        source: "floor_plan_enquiry",
+        notes: "Unlocked Floor Plans",
       });
       setLoading(false);
       setSubmitted(true);
@@ -98,10 +96,10 @@ export default function BookingModal({
             </div>
             <div>
               <h3 className="font-display text-lg font-bold tracking-tight">
-                Schedule Site Walkthrough
+                Unlock Floor Plans
               </h3>
               <p className="text-[10px] text-champagne uppercase tracking-widest font-bold">
-                Private Viewing & Portfolio Orientation
+                Enter your details to view layouts
               </p>
             </div>
           </div>
@@ -116,7 +114,7 @@ export default function BookingModal({
         {/* Content/Form Area */}
         <div className="p-6 sm:p-8">
           {!submitted ? (
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-6">
               
               {/* Full Name */}
               <div className="relative border-b border-gray-100 focus-within:border-navy-primary py-1">
@@ -178,84 +176,6 @@ export default function BookingModal({
                 {errors.phone && <p className="text-red-500 text-[10px] mt-1 absolute -bottom-4">{errors.phone}</p>}
               </div>
 
-              {/* Scheduling grid */}
-              <div className="grid grid-cols-2 gap-4">
-                {/* Preferred Date */}
-                <div>
-                  <label className="text-[9px] font-extrabold text-navy-primary uppercase tracking-wider block mb-1">
-                    Preferred Date
-                  </label>
-                  <input
-                    type="date"
-                    id="preferredDate"
-                    required
-                    min={new Date().toISOString().split("T")[0]}
-                    value={formData.preferredDate}
-                    onChange={handleChange}
-                    className="w-full bg-gray-50 border border-gray-200 text-xs sm:text-sm font-body px-3 py-2 rounded outline-none focus:border-navy-primary"
-                  />
-                </div>
-
-                {/* Preferred Time */}
-                <div>
-                  <label className="text-[9px] font-extrabold text-navy-primary uppercase tracking-wider block mb-1">
-                    Preferred Time Slot
-                  </label>
-                  <select
-                    id="preferredTime"
-                    value={formData.preferredTime}
-                    onChange={handleChange}
-                    className="w-full bg-gray-50 border border-gray-200 text-xs sm:text-sm font-body px-3 py-2 rounded outline-none focus:border-navy-primary"
-                  >
-                    <option value="10:00">10:00 AM - 12:00 PM</option>
-                    <option value="12:00">12:00 PM - 02:00 PM</option>
-                    <option value="14:00">02:00 PM - 04:00 PM</option>
-                    <option value="16:00">04:00 PM - 06:00 PM</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* Layout Configuration choice */}
-              <div>
-                <label className="text-[9px] font-extrabold text-navy-primary uppercase tracking-wider block mb-1">
-                  Apartment Configuration Interest
-                </label>
-                <div className="flex gap-3">
-                  {[
-                    { id: "Luxury 3 BHK", label: "3 BHK Layout" },
-                  ].map((option) => (
-                    <button
-                      key={option.id}
-                      type="button"
-                      onClick={() => setFormData(prev => ({ ...prev, unitType: option.id }))}
-                      className={`flex-1 py-2 px-3 rounded border text-xs font-bold font-body transition-all duration-300 flex items-center justify-center gap-1.5 ${
-                        formData.unitType === option.id
-                          ? "bg-navy-primary text-white border-navy-primary shadow-sm"
-                          : "bg-white text-gray-text border-gray-200 hover:border-navy-primary"
-                      }`}
-                    >
-                      <Building className="h-3.5 w-3.5" />
-                      {option.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Custom message */}
-              <div>
-                <label className="text-[9px] font-extrabold text-navy-primary uppercase tracking-wider block mb-1">
-                  Any Specific Inquiry Requests (Optional)
-                </label>
-                <textarea
-                  id="notes"
-                  rows={2}
-                  value={formData.notes}
-                  onChange={handleChange}
-                  placeholder="e.g. Prefer top-floor unit, request high-resolution elevation blueprints..."
-                  className="w-full bg-gray-50 border border-gray-200 rounded p-2 text-xs font-body outline-none focus:border-navy-primary resize-none"
-                />
-              </div>
-
               <button
                 type="submit"
                 disabled={loading}
@@ -264,10 +184,10 @@ export default function BookingModal({
                 {loading ? (
                   <>
                     <span className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    REGISTERING SLOT...
+                    SUBMITTING DETAILS...
                   </>
                 ) : (
-                  "CONFIRM VISIT SCHEDULE"
+                  "VIEW FLOOR PLANS"
                 )}
               </button>
             </form>
@@ -279,27 +199,18 @@ export default function BookingModal({
               
               <div>
                 <h4 className="font-display text-xl font-bold text-navy-primary">
-                  Walkthrough Confirmed
+                  Floor Plans Unlocked
                 </h4>
                 <p className="font-body text-xs text-gray-text mt-1.5 max-w-sm mx-auto">
-                  Thank you, <strong>{formData.fullName}</strong>. A dedicated Relationship Director is assigned to guide your tour on <strong>{formData.preferredDate}</strong>.
+                  Thank you, <strong>{formData.fullName}</strong>. The floor plans are now fully unlocked for you to view.
                 </p>
-              </div>
-
-              <div className="p-4 bg-navy-primary/5 rounded border border-navy-primary/10 max-w-xs mx-auto text-xs font-body space-y-1">
-                <span className="text-[9px] font-extrabold text-navy-primary uppercase tracking-widest block">
-                  Reserved Walkthrough Pass
-                </span>
-                <span className="font-display text-base font-bold text-navy-primary block">
-                  Symphony-Heights-{Math.floor(100 + Math.random() * 900)}
-                </span>
               </div>
 
               <button
                 onClick={onClose}
-                className="flex items-center justify-center gap-2 bg-navy-dark text-white font-body text-xs font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-navy-primary transition-colors shadow-lg rounded-sm"
+                className="w-full flex items-center justify-center gap-2 bg-navy-dark text-white font-body text-xs font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-navy-primary transition-colors shadow-lg rounded-sm"
               >
-                Return to Site
+                View Layouts
               </button>
             </div>
           )}

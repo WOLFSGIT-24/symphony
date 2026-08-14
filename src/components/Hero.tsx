@@ -22,32 +22,27 @@ export default function Hero({ onOpenEnquiry, onRequestDownload }: HeroProps) {
               className="w-full h-[58vh] sm:h-auto sm:aspect-[4/5] object-cover object-bottom"
             />
             {/* Pricing Box (Mobile overlay) */}
-            <div className="lg:hidden absolute bottom-0 translate-y-[65%] left-1/2 -translate-x-1/2 w-[88%] max-w-[290px] bg-navy-primary text-white py-2.5 px-4 shadow-2xl z-20 rounded-sm border border-white/10 text-center">
-              <div className="text-[10px] sm:text-xs text-champagne uppercase tracking-widest font-extrabold mb-0.5">
-                Starting from
+            <div className="lg:hidden absolute bottom-0 translate-y-[65%] left-1/2 -translate-x-1/2 w-[88%] max-w-[290px] bg-navy-primary text-white py-3 px-4 shadow-2xl z-20 rounded-sm border border-white/10 text-center">
+              <div className="font-body text-[10px] font-bold tracking-wider text-white/90 uppercase">
+                Flexi Payment Plan
               </div>
-              <div className="font-display text-2xl sm:text-3xl font-bold text-champagne leading-tight">
-                ₹1.85 Crore*
-              </div>
-              <div className="border-t border-white/10 pt-1.5 mt-1">
-                <div className="font-body text-[10px] font-bold tracking-wider text-white/90 uppercase">
-                  Flexi Payment Plan
-                </div>
-                <div className="text-2xl text-white/70 font-semibold font-body leading-tight mt-0.5">
-                  25 : 25 : 25 : 25
-                </div>
+              <div className="text-2xl text-white/70 font-semibold font-body leading-tight mt-0.5">
+                25 : 25 : 25 : 25
               </div>
             </div>
           </div>
 
           {/* Quick Summary Banner (Mobile Only) */}
-          <div className="lg:hidden mt-24 mx-4 p-4 bg-white rounded-lg border border-navy-primary/10 shadow-lg flex items-center justify-between text-left">
-            <div className="space-y-1.5 flex-[1.4] pr-3">
-              <div className="text-[10px] font-extrabold text-navy-primary uppercase tracking-wider font-body">
+          <div className="lg:hidden mt-16 mx-4 p-4 bg-white rounded-lg border border-navy-primary/10 shadow-lg flex items-center justify-between text-left">
+            <div className="space-y-1 flex-[1.6] pr-2">
+              <div className="text-[13px] font-extrabold text-[#5c4a41] uppercase tracking-wider font-body">
                 Premium 3 BHK Homes
               </div>
-              <div className="text-[18px] font-bold text-charcoal/80 uppercase tracking-widest flex items-center gap-1 font-body">
-                <MapPin className="h-4 w-4 text-bronze shrink-0" />
+              <div className="text-[18px] font-extrabold text-[#5c4a41] uppercase tracking-tight font-body leading-none py-0.5">
+                Starting ₹ 1.8 CR
+              </div>
+              <div className="text-[11px] font-bold text-[#5c4a41]/80 uppercase tracking-widest flex items-center gap-1.5 font-body pt-0.5">
+                <MapPin className="h-3.5 w-3.5 text-[#5c4a41] shrink-0" />
                 Hennur
               </div>
             </div>
@@ -68,7 +63,7 @@ export default function Hero({ onOpenEnquiry, onRequestDownload }: HeroProps) {
         <div className="w-full lg:w-1/2 flex flex-col items-start text-left relative z-20 px-6 md:px-0">
           <div className="flex flex-row items-start justify-between w-full gap-4 mb-6">
             <div className="flex-1">
-              <h1 className="font-display text-[25px] sm:text-5xl md:text-5xl text-navy-primary font-bold tracking-tight leading-[1.15] mb-2 animate-fade-in">
+              <h1 className="hidden sm:block font-display text-[25px] sm:text-5xl md:text-5xl text-navy-primary font-bold tracking-tight leading-[1.15] mb-2 animate-fade-in">
                 Your First Premium Home Should Never Be a Compromise.
               </h1>
               <p className="hidden lg:block font-body text-lg text-navy-primary/80 mb-2 animate-fade-in delay-100 leading-relaxed max-w-xl">

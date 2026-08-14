@@ -107,7 +107,7 @@ export default function BrochureForm({ onAddLead, preselectedUnit }: BrochureFor
   };
 
   return (
-    <section id="snapshots" className="w-full py-24 bg-navy-dark text-white relative">
+    <section id="snapshots" className="w-full py-12 md:py-16 bg-navy-dark text-white relative">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(254,214,91,0.06),transparent)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
@@ -225,26 +225,6 @@ export default function BrochureForm({ onAddLead, preselectedUnit }: BrochureFor
                       {errors.phone && <p className="text-red-500 text-[10px] mt-1 absolute -bottom-4">{errors.phone}</p>}
                     </div>
 
-                    {/* Multi-Unit Interest Segment */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {/* Apartment Preference Selector */}
-                      <div>
-                        <label className="text-[10px] font-bold text-navy-primary uppercase tracking-wider block mb-2">
-                          Apartment Interest
-                        </label>
-                        <select
-                          id="unitType"
-                          value={formData.unitType}
-                          onChange={handleChange}
-                          className="w-full bg-gray-50 border border-gray-200 text-xs sm:text-sm font-body px-3.5 py-2.5 rounded outline-none focus:border-navy-primary"
-                        >
-                          <option value="">Select Configuration</option>
-                          <option value="Luxury 3 BHK">Luxury 3 BHK (1,680 Sq.Ft)</option>
-                          <option value="Both Layouts">Inquire About Both</option>
-                        </select>
-                      </div>
-
-                    </div>
 
                     <button
                       type="submit"

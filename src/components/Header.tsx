@@ -69,10 +69,10 @@ export default function Header({ onOpenBooking, onToggleAdmin, isAdminActive }: 
             className="flex items-center gap-3 group focus:outline-none"
           >
             <img
-              src="/logo.png"
+              src="/combo-logo.png"
               alt="Symphony Heights logo"
               referrerPolicy="no-referrer"
-              className="h-36 md:h-40 py-1 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+              className="h-10 md:h-40 py-1 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
             />
           </a>
 

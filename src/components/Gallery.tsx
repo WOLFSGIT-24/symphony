@@ -15,7 +15,7 @@ const images = [
 export default function Gallery() {
 
   return (
-    <section id="gallery" className="w-full py-16 md:py-24 bg-marble text-charcoal">
+    <section id="gallery" className="w-full py-12 md:py-16 bg-marble text-charcoal">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
           <span className="font-body text-xs font-bold text-navy-primary uppercase tracking-[0.25em] block">

@@ -6,7 +6,7 @@ interface IntimateScaleProps {
 }
 
 export default function IntimateScale({ onRequestDownload }: IntimateScaleProps) {
-  const images = ["/building.png", "/balcony.png"];
+  const images = ["/building.png", "/balcony.png", "/building2.jpg", "/building3.jpg", "/building4.jpg"];
   const [currentIdx, setCurrentIdx] = useState(0);
 
   useEffect(() => {
@@ -32,19 +32,19 @@ export default function IntimateScale({ onRequestDownload }: IntimateScaleProps)
   );
 
   return (
-    <section className="w-full pt-6 pb-8 md:py-24 bg-marble overflow-hidden">
+    <section className="w-full py-12 md:py-16 bg-marble overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
           {/* Informational left section */}
-          <div className="lg:col-span-5 space-y-4">
+          <div className="lg:col-span-5 space-y-4 text-center lg:text-left">
             <span className="font-body text-xs font-bold text-navy-primary uppercase tracking-[0.25em] block">
               The Intimate Scale
             </span>
             <h2 className="font-display text-3xl sm:text-4xl text-navy-primary font-semibold leading-tight">
               Boutique Living. Thoughtfully Designed.
             </h2>
-            <div className="h-[2px] w-16 bg-navy-primary" />
+            <div className="h-[2px] w-16 bg-navy-primary mx-auto lg:mx-0" />
 
             {/* Mobile Only Responsive Image Slider */}
             <div className="lg:hidden w-full my-4">

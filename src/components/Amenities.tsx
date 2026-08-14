@@ -24,7 +24,7 @@ export default function Amenities() {
   }, [activeTab, isHovered, slideImages.length]);
 
   return (
-    <section id="amenities" className="w-full py-20 bg-marble text-charcoal">
+    <section id="amenities" className="w-full py-12 md:py-16 bg-marble text-charcoal">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">

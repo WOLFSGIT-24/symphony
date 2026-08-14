@@ -29,7 +29,7 @@ export default function Footer({ onOpenPrivacy, onOpenTerms }: FooterProps = {})
           {/* Left Column: Logo & Address */}
           <div className="md:col-span-5 space-y-6">
             <img
-              src="/fotter-logo.png"
+              src="/combo-logo.png"
               alt="Disha Properties Logo"
               className="max-h-16 w-auto object-contain brightness-0 invert"
             />
@@ -143,7 +143,7 @@ export default function Footer({ onOpenPrivacy, onOpenTerms }: FooterProps = {})
               Wolf Media
             </p>
             <p className="text-[11px] text-white/60">
-              This website is operated by an authorized marketing partner for Runwal Realty.
+              This website is operated by an authorized marketing partner for Disha Properties.
             </p>
           </div>
 
