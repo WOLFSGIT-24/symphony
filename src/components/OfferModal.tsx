@@ -1,71 +1,98 @@
-import React, { useState, useEffect } from 'react';
-import { X, Check } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { X, Check } from "lucide-react";
 
 interface OfferModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onAddLead: (lead: Omit<any, "id" | "submittedAt">) => void;
+  onAddLead: (lead: any) => void;
 }
 
 export default function OfferModal({ isOpen, onClose, onAddLead }: OfferModalProps) {
   const [formData, setFormData] = useState({
-    firstName: '',
-    email: '',
-    countryCode: '+91 (IN)',
-    phone: '',
+    fullName: "",
+    email: "",
+    phone: "",
     agree: true,
   });
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   // Handle escape key to close
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === "Escape") onClose();
     };
-    if (isOpen) window.addEventListener('keydown', handleEscape);
-    return () => window.removeEventListener('keydown', handleEscape);
+    if (isOpen) window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
   }, [isOpen, onClose]);
 
   // Lock body scroll when modal is open
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [isOpen]);
 
   if (!isOpen) return null;
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target as HTMLInputElement;
-    const checked = (e.target as HTMLInputElement).checked;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value, type, checked } = e.target;
+    
+    let sanitizedValue = value;
+    if (name === "phone") {
+      sanitizedValue = value.replace(/\D/g, "").slice(0, 10);
+    } else if (name === "fullName") {
+      sanitizedValue = value.replace(/[^A-Za-z\s]/g, "");
+    }
+
     setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === "checkbox" ? checked : sanitizedValue,
     }));
+
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.firstName || !formData.phone) return;
     
+    const newErrors: Record<string, string> = {};
+    if (!/^[A-Za-z\s]+$/.test(formData.fullName.trim())) {
+      newErrors.fullName = "Name should only contain letters";
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      newErrors.email = "Please enter a valid email address";
+    }
+    if (!/^\d{10}$/.test(formData.phone.trim())) {
+      newErrors.phone = "Phone number must be exactly 10 digits";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setErrors({});
     setLoading(true);
     
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 1200));
     
     onAddLead({
-      fullName: formData.firstName,
+      fullName: formData.fullName,
       email: formData.email,
-      phone: `${formData.countryCode.split(' ')[0]} ${formData.phone}`,
-      source: 'offer_popup',
-      status: 'Pending',
-      notes: 'Interested in Flexi Payment Plan'
+      phone: formData.phone,
+      source: "popup_visit_form",
+      status: "Pending",
+      notes: "Interested in visiting the project",
     });
     
     setLoading(false);
@@ -86,7 +113,7 @@ export default function OfferModal({ isOpen, onClose, onAddLead }: OfferModalPro
         onClick={onClose}
       />
       
-      <div className="relative w-full max-w-[400px] bg-[#EBE3CD] rounded-lg shadow-2xl overflow-hidden animate-fade-in border border-[#D5CBAA]">
+      <div className="relative w-full max-w-[420px] bg-[#EBE3CD] rounded-lg shadow-2xl overflow-hidden animate-fade-in border border-[#D5CBAA]">
         {/* Close Button */}
         <button 
           onClick={onClose}
@@ -97,32 +124,37 @@ export default function OfferModal({ isOpen, onClose, onAddLead }: OfferModalPro
 
         {!submitted ? (
           <form onSubmit={handleSubmit} className="flex flex-col h-full">
-            {/* Header Content */}
+            {/* Header Content matching form section */}
             <div className="p-6 sm:p-8 pb-5 border-b border-[#D5CBAA]">
-              <h2 className="font-display text-[26px] font-bold text-navy-primary leading-[1.2] mb-3 pr-6 uppercase">
-                Flexi Payment<br />Plan
-              </h2>
+              <h3 className="font-display text-[15px] sm:text-[16px] font-bold text-navy-primary uppercase tracking-wide">
+                Schedule Your Exclusive Site Visit
+              </h3>
+              <p className="font-body text-xs text-gray-600 mt-1.5 leading-relaxed">
+                Experience the project, understand the floor plans and explore the lifestyle that Symphony Heights has to offer.
+              </p>
             </div>
 
-            {/* Form Fields */}
+            {/* Form Fields matching BrochureForm */}
             <div className="p-6 sm:p-8 pt-5 space-y-4">
-              <div>
-                <label htmlFor="firstName" className="block text-sm font-bold font-body text-navy-primary mb-1.5">
-                  First Name*
+              <div className="relative">
+                <label htmlFor="fullName" className="block text-xs font-bold font-body text-navy-primary mb-1">
+                  Full Name*
                 </label>
                 <input
                   type="text"
-                  id="firstName"
-                  name="firstName"
+                  id="fullName"
+                  name="fullName"
                   required
-                  value={formData.firstName}
+                  value={formData.fullName}
                   onChange={handleChange}
+                  placeholder="e.g. John Doe"
                   className="w-full bg-white border border-black rounded-md px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-navy-primary/20 focus:border-navy-primary font-body text-black"
                 />
+                {errors.fullName && <p className="text-red-500 text-[10px] mt-1">{errors.fullName}</p>}
               </div>
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-bold font-body text-navy-primary mb-1.5">
+              <div className="relative">
+                <label htmlFor="email" className="block text-xs font-bold font-body text-navy-primary mb-1">
                   Email Address*
                 </label>
                 <input
@@ -132,37 +164,27 @@ export default function OfferModal({ isOpen, onClose, onAddLead }: OfferModalPro
                   required
                   value={formData.email}
                   onChange={handleChange}
+                  placeholder="e.g. john.doe@example.com"
                   className="w-full bg-white border border-black rounded-md px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-navy-primary/20 focus:border-navy-primary font-body text-black"
                 />
+                {errors.email && <p className="text-red-500 text-[10px] mt-1">{errors.email}</p>}
               </div>
 
-              <div>
-                <label htmlFor="phone" className="block text-sm font-bold font-body text-navy-primary mb-1.5">
-                  Mobile Number*
+              <div className="relative">
+                <label htmlFor="phone" className="block text-xs font-bold font-body text-navy-primary mb-1">
+                  Phone Number*
                 </label>
-                <div className="flex gap-2">
-                  <select
-                    name="countryCode"
-                    value={formData.countryCode}
-                    onChange={handleChange}
-                    className="w-[100px] bg-white border border-black rounded-md px-2 py-2.5 text-sm outline-none font-body text-black appearance-none cursor-pointer text-center"
-                  >
-                    <option value="+91 (IN)">+91 (IN)</option>
-                    <option value="+1 (US)">+1 (US)</option>
-                    <option value="+44 (UK)">+44 (UK)</option>
-                    <option value="+971 (UAE)">+971 (UAE)</option>
-                  </select>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    required
-                    placeholder="Phone number"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="flex-1 bg-white border border-black rounded-md px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[#45579C]/20 focus:border-[#45579C] font-body text-black placeholder:text-gray-400"
-                  />
-                </div>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  required
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="e.g. 9876543210"
+                  className="w-full bg-white border border-black rounded-md px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-navy-primary/20 focus:border-navy-primary font-body text-black placeholder:text-gray-400"
+                />
+                {errors.phone && <p className="text-red-500 text-[10px] mt-1">{errors.phone}</p>}
               </div>
 
               <div className="flex items-start gap-3 mt-4">
@@ -185,24 +207,24 @@ export default function OfferModal({ isOpen, onClose, onAddLead }: OfferModalPro
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-black text-white font-body text-sm font-bold tracking-[0.2em] uppercase py-3.5 mt-2 rounded-full hover:bg-gray-800 transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                className="w-full bg-black text-white font-body text-xs font-bold tracking-[0.2em] uppercase py-4 mt-2 rounded-full hover:bg-gray-800 transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
                 {loading ? (
                   <span className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                 ) : (
-                  "SUBMIT"
+                  "SCHEDULE VISIT"
                 )}
               </button>
             </div>
           </form>
         ) : (
-          <div className="p-8 text-center h-[400px] flex flex-col justify-center">
+          <div className="p-8 text-center h-[380px] flex flex-col justify-center">
             <div className="h-16 w-16 bg-green-50 border border-green-200 rounded-full flex items-center justify-center mx-auto text-green-600 mb-6 shadow-sm">
               <Check className="h-8 w-8" />
             </div>
-            <h3 className="font-display text-2xl font-bold text-[#45579C] mb-2">Request Received</h3>
-            <p className="font-body text-sm text-gray-700">
-              Thank you! Our sales team will contact you shortly with details regarding the Flexi Payment plan.
+            <h3 className="font-display text-2xl font-bold text-navy-primary mb-2">Request Received</h3>
+            <p className="font-body text-xs text-gray-700 leading-relaxed max-w-xs mx-auto">
+              Thank you! Our relationship team has received your walkthrough request and will contact you shortly.
             </p>
           </div>
         )}

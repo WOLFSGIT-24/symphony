@@ -30,6 +30,7 @@ export default function App() {
   const [offerOpen, setOfferOpen] = useState(false);
   const [preselectedUnit, setPreselectedUnit] = useState<string | null>(null);
   const [downloadModalOpen, setDownloadModalOpen] = useState(false);
+  const [triggerDownload, setTriggerDownload] = useState(false);
   const [floorPlansUnlocked, setFloorPlansUnlocked] = useState(() => {
     try {
       return localStorage.getItem("floor_plans_unlocked") === "true";
@@ -87,9 +88,25 @@ export default function App() {
       console.error(e);
     }
     setFloorPlansUnlocked(true);
+
+    if (triggerDownload) {
+      try {
+        window.open("/Brochure.pdf", "_blank");
+        const link = document.createElement("a");
+        link.href = "/Brochure.pdf";
+        link.setAttribute("download", "Symphony_Heights_Brochure.pdf");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } catch (e) {
+        console.error("Error triggering PDF download", e);
+      }
+      setTriggerDownload(false);
+    }
   };
 
   const handleRequestDownload = () => {
+    setTriggerDownload(true);
     setOfferOpen(true);
   };
 

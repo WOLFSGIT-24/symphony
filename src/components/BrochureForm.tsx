@@ -97,13 +97,17 @@ export default function BrochureForm({ onAddLead, preselectedUnit }: BrochureFor
   };
 
   const handleDownloadBrochure = () => {
-    const link = document.createElement("a");
-    link.href = "/Brochure.pdf";
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    try {
+      window.open("/Brochure.pdf", "_blank");
+      const link = document.createElement("a");
+      link.href = "/Brochure.pdf";
+      link.setAttribute("download", "Symphony_Heights_Brochure.pdf");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (e) {
+      console.error("Error downloading brochure", e);
+    }
   };
 
   return (
@@ -178,7 +182,7 @@ export default function BrochureForm({ onAddLead, preselectedUnit }: BrochureFor
                           required
                           value={formData.fullName}
                           onChange={handleChange}
-                          placeholder="e.g. Rahul Goyal"
+                          placeholder="e.g. John Doe"
                           className="w-full bg-transparent border-none text-sm font-body outline-none placeholder:text-gray-300 py-1"
                         />
                       </div>
