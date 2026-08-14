@@ -19,30 +19,39 @@ export default function Location() {
     }
   };
 
-  return (
-    <section id="location" className="w-full py-24 bg-champagne/15 relative overflow-hidden">
-      {/* Background soft grids */}
-      <div className="absolute top-0 right-0 w-1/3 h-full opacity-5 pointer-events-none">
-        <svg className="w-full h-full fill-navy-primary" viewBox="0 0 100 100">
-          <circle cx="85" cy="50" r="45" />
-        </svg>
-      </div>
+  const renderMap = () => (
+    <iframe
+      src="https://maps.google.com/maps?q=Hennur%2C%20Bengaluru&t=&z=14&ie=UTF8&iwloc=&output=embed"
+      width="100%"
+      height="100%"
+      style={{ border: 0 }}
+      allowFullScreen={true}
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+      title="Symphony Heights Google Map"
+      className="w-full h-full"
+    ></iframe>
+  );
 
+  return (
+    <section id="location" className="w-full py-20 bg-marble text-charcoal">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
           {/* Informational Connectivity details */}
-          <div className="lg:col-span-5 space-y-8">
-            <div className="inline-flex items-center gap-3">
-              <span className="w-12 h-[1px] bg-navy-primary" />
-              <span className="font-body text-xs font-bold text-navy-primary uppercase tracking-[0.2em]">
-                Prime Location
-              </span>
-            </div>
-
+          <div className="lg:col-span-5 space-y-4">
+            <span className="font-body text-xs font-bold text-navy-primary uppercase tracking-[0.25em] block">
+              Prime Location
+            </span>
             <h2 className="font-display text-3xl sm:text-4xl text-navy-primary font-semibold leading-tight">
               Everything That Matters. In One Address.
             </h2>
+            <div className="h-[2px] w-16 bg-navy-primary mb-6" />
+
+            {/* Mobile Only Google Map */}
+            <div className="lg:hidden w-full h-[300px] sm:h-[380px] rounded-xl overflow-hidden shadow-xl border border-navy-primary/10 my-4">
+              {renderMap()}
+            </div>
 
 
 
@@ -134,13 +143,9 @@ export default function Location() {
             </div>
           </div>
 
-          <div className="lg:col-span-7 rounded-xl shadow-2xl overflow-hidden relative border border-navy-primary/10 flex items-center justify-center bg-[#F4EDE5] p-6 sm:p-10 lg:p-12">
-            
-            <img 
-              src="/map.png"
-              alt="Location Map"
-              className="w-full max-w-sm sm:max-w-md lg:max-w-lg h-auto object-contain drop-shadow-sm"
-            />
+          {/* Desktop Only Google Map */}
+          <div className="hidden lg:block lg:col-span-7 rounded-xl shadow-2xl overflow-hidden border border-navy-primary/10 w-full h-[500px]">
+            {renderMap()}
           </div>
 
         </div>

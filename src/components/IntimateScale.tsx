@@ -37,24 +37,21 @@ export default function IntimateScale({ onRequestDownload }: IntimateScaleProps)
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
           {/* Informational left section */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="inline-flex items-center gap-3">
-              <span className="w-12 h-[1px] bg-navy-light" />
-              <span className="font-body text-xs font-bold text-gray-text uppercase tracking-[0.2em]">
-                The Intimate Scale
-              </span>
-            </div>
-
+          <div className="lg:col-span-5 space-y-4">
+            <span className="font-body text-xs font-bold text-navy-primary uppercase tracking-[0.25em] block">
+              The Intimate Scale
+            </span>
             <h2 className="font-display text-3xl sm:text-4xl text-navy-primary font-semibold leading-tight">
               Boutique Living. Thoughtfully Designed.
             </h2>
+            <div className="h-[2px] w-16 bg-navy-primary" />
 
             {/* Mobile Only Responsive Image Slider */}
-            <div className="lg:hidden w-full">
+            <div className="lg:hidden w-full my-4">
               {renderSlider()}
             </div>
 
-            <p className="font-body text-base md:text-lg text-gray-text leading-relaxed">
+            <p className="font-body text-sm md:text-base text-gray-text leading-relaxed pt-2">
               Luxury isn't measured by the number of amenities. It's reflected in planning, privacy and attention to detail. Symphony Heights offers a boutique living experience with just 128 residences, ensuring a quieter, more exclusive community.
             </p>
 

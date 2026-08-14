@@ -68,7 +68,7 @@ export default function Hero({ onOpenEnquiry, onRequestDownload }: HeroProps) {
         <div className="w-full lg:w-1/2 flex flex-col items-start text-left relative z-20 px-6 md:px-0">
           <div className="flex flex-row items-start justify-between w-full gap-4 mb-6">
             <div className="flex-1">
-              <h1 className="font-display text-[20px] sm:text-5xl md:text-5xl text-navy-primary font-bold tracking-tight leading-[1.15] mb-2 animate-fade-in">
+              <h1 className="font-display text-[25px] sm:text-5xl md:text-5xl text-navy-primary font-bold tracking-tight leading-[1.15] mb-2 animate-fade-in">
                 Your First Premium Home Should Never Be a Compromise.
               </h1>
               <p className="hidden lg:block font-body text-lg text-navy-primary/80 mb-2 animate-fade-in delay-100 leading-relaxed max-w-xl">

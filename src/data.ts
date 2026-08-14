@@ -37,8 +37,8 @@ export const amenitiesData: AmenityItem[] = [
     level: "Rooftop",
     levelNumber: "03",
     description: "Recreation, leisure spaces and panoramic skyline views that elevate everyday living.",
-    imageUrl: "/roof2.jpg",
-    images: ["/roof2.jpg", "/roof3.jpg", "/roof4.jpg"],
+    imageUrl: "/roof5.jpg",
+    images: ["/roof5.jpg", "/roof2.jpg", "/roof3.jpg", "/roof4.jpg"],
     bullets: [
       "Infinity Edge lap pool overlooking the city skyline",
       "Sunset Lounge & open-air Barbecue deck",

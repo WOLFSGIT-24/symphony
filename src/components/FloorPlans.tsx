@@ -17,12 +17,11 @@ export default function FloorPlans({ onSelectUnit }: FloorPlansProps) {
     <section id="floor-plans" className="w-full pt-10 pb-16 md:py-28 bg-white scroll-mt-20">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
-        {/* Editorial Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-          <span className="font-body text-xs font-bold text-navy-primary uppercase tracking-[0.25em]">
-            Bespoke Architecture
+          <span className="font-body text-xs font-bold text-navy-primary uppercase tracking-[0.25em] block">
+            Master Plan
           </span>
-          <h2 className="font-display text-3xl sm:text-4xl text-navy-primary font-semibold">
+          <h2 className="font-display text-3xl sm:text-4xl text-navy-primary font-semibold leading-tight">
             Architectural Drafting
           </h2>
           <div className="h-[2px] w-16 bg-navy-primary mx-auto" />
