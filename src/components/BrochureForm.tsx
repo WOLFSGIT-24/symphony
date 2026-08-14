@@ -156,7 +156,7 @@ export default function BrochureForm({ onAddLead, preselectedUnit }: BrochureFor
               {!formSubmitted ? (
                 <>
                   <div className="mb-8">
-                    <h3 className="font-display text-xl sm:text-2xl font-bold text-navy-primary">
+                    <h3 className="font-display text-lg sm:text-xl font-bold text-navy-primary">
                       Schedule Your Exclusive Site Visit
                     </h3>
                     <p className="font-body text-xs text-gray-text mt-1">

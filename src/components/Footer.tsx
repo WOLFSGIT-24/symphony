@@ -31,7 +31,7 @@ export default function Footer({ onOpenPrivacy, onOpenTerms }: FooterProps = {})
             <img
               src="/combo-logo.png"
               alt="Disha Properties Logo"
-              className="max-h-16 w-auto object-contain brightness-0 invert"
+              className="max-h-12 w-auto object-contain brightness-0 invert"
             />
             <div className="space-y-2 text-xs sm:text-sm text-white/60 leading-relaxed max-w-sm">
               <p>Symphony Heights by Disha Properties</p>

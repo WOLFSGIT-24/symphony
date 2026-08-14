@@ -32,29 +32,23 @@ export default function Hero({ onOpenEnquiry, onRequestDownload }: HeroProps) {
             </div>
           </div>
 
-          {/* Quick Summary Banner (Mobile Only) */}
           <div className="lg:hidden mt-16 mx-4 p-4 bg-white rounded-lg border border-navy-primary/10 shadow-lg flex items-center justify-between text-left">
-            <div className="space-y-1 flex-[1.6] pr-2">
+            <div className="space-y-1 pr-2">
               <div className="text-[13px] font-extrabold text-[#5c4a41] uppercase tracking-wider font-body">
                 Premium 3 BHK Homes
               </div>
               <div className="text-[18px] font-extrabold text-[#5c4a41] uppercase tracking-tight font-body leading-none py-0.5">
                 Starting ₹ 1.8 CR
               </div>
-              <div className="text-[11px] font-bold text-[#5c4a41]/80 uppercase tracking-widest flex items-center gap-1.5 font-body pt-0.5">
-                <MapPin className="h-3.5 w-3.5 text-[#5c4a41] shrink-0" />
-                Hennur
-              </div>
             </div>
 
-            <div className="h-12 w-[1px] bg-charcoal/20" />
+            <div className="h-8 w-[1px] bg-charcoal/20 mx-4" />
 
-            <div className="flex-1 pl-4 flex items-center justify-center">
-              <img
-                src="/combo-logo.png"
-                alt="Disha Properties Logo"
-                className="max-h-8 object-contain"
-              />
+            <div className="flex items-center gap-1.5 font-body shrink-0">
+              <MapPin className="h-4 w-4 text-[#5c4a41] shrink-0" />
+              <span className="text-[16px] font-bold text-[#5c4a41]/80 uppercase tracking-widest">
+                Hennur
+              </span>
             </div>
           </div>
         </div>

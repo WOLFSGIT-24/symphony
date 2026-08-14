@@ -109,27 +109,7 @@ export default function FloorPlans({
                   )}
                 </div>
 
-                {/* Units & Area Details */}
-                <div className="w-full text-left space-y-3.5 pt-2 font-body">
-                  <div className="space-y-1.5">
-                    <span className="text-[10px] font-extrabold text-navy-primary uppercase tracking-wider block mb-1">
-                      Area Details:
-                    </span>
-                    <div className="bg-marble/55 rounded-lg p-3 border border-navy-primary/5 space-y-2">
-                      {plan.details.map((detail, dIdx) => (
-                        <div
-                          key={dIdx}
-                          className="flex justify-between text-[11px] text-gray-text leading-tight"
-                        >
-                          <span>{detail.split(" - ")[0]}</span>
-                          <span className="font-semibold text-navy-dark">
-                            {detail.split(" - ")[1]}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+
               </div>
 
               {/* Call To Action Button */}
