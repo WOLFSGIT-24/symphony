@@ -16,7 +16,7 @@ export default function ProjectHighlights({ onRequestDownload }: ProjectHighligh
   }, []);
 
   return (
-    <section className="py-16 md:py-24 bg-marble relative z-20">
+    <section className="pt-16 pb-6 md:py-24 bg-marble relative z-20">
       <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Carousel Container */}
@@ -49,11 +49,14 @@ export default function ProjectHighlights({ onRequestDownload }: ProjectHighligh
                 
                 <div className="h-[1px] w-full bg-white/10 mb-8"></div>
                 
+                <div className="font-body text-xs font-bold text-champagne uppercase tracking-widest mb-1">
+                  NEVER BEFORE. NEVER AGAIN.
+                </div>
                 <div className="font-body text-sm sm:text-base font-bold text-white uppercase tracking-widest mb-3">
-                  ZERO PRE-EMI PLAN
+                  FLEXI PAYMENT PLAN
                 </div>
                 <div className="font-body text-sm text-white/70 tracking-wide leading-relaxed">
-                  Pay 25% on Booking, 25% on Plinth, 25% on Structure, 25% on Possession.
+                  Pay 25% now and nothing for the next one year.
                 </div>
               </div>
             </div>

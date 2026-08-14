@@ -65,7 +65,7 @@ export default function OfferModal({ isOpen, onClose, onAddLead }: OfferModalPro
       phone: `${formData.countryCode.split(' ')[0]} ${formData.phone}`,
       source: 'offer_popup',
       status: 'Pending',
-      notes: 'Interested in Zero Pre-EMI Plan'
+      notes: 'Interested in Flexi Payment Plan'
     });
     
     setLoading(false);
@@ -100,10 +100,13 @@ export default function OfferModal({ isOpen, onClose, onAddLead }: OfferModalPro
             {/* Header Content */}
             <div className="p-6 sm:p-8 pb-5 border-b border-[#D5CBAA]">
               <h2 className="font-display text-[26px] font-bold text-navy-primary leading-[1.2] mb-3 pr-6 uppercase">
-                Zero Pre-EMI<br />Plan
+                Flexi Payment<br />Plan
               </h2>
+              <div className="font-body text-xs font-bold text-bronze uppercase tracking-wider mb-1">
+                NEVER BEFORE. NEVER AGAIN.
+              </div>
               <p className="font-body text-sm text-[#333] font-medium leading-relaxed">
-                Pay 25% on Booking, 25% on Plinth, 25% on Structure, 25% on Possession.
+                Pay 25% now and nothing for the next one year.
               </p>
             </div>
 
@@ -205,7 +208,7 @@ export default function OfferModal({ isOpen, onClose, onAddLead }: OfferModalPro
             </div>
             <h3 className="font-display text-2xl font-bold text-[#45579C] mb-2">Request Received</h3>
             <p className="font-body text-sm text-gray-700">
-              Thank you! Our sales team will contact you shortly with details regarding the Zero Pre-EMI plan.
+              Thank you! Our sales team will contact you shortly with details regarding the Flexi Payment plan.
             </p>
           </div>
         )}

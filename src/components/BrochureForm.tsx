@@ -139,7 +139,7 @@ export default function BrochureForm({ onAddLead, preselectedUnit }: BrochureFor
                   <span className="font-semibold text-white">Hennur Bagalur Road, Doddagubbi Main Rd, Bengaluru, 560077</span>
                 </li>
                 <li className="flex justify-between border-b border-white/5 pb-2.5">
-                  <span className="font-semibold text-white">Exclusive 25:25:25:25 Payment Plan</span>
+                  <span className="font-semibold text-white">Exclusive Flexi Payment Plan</span>
                 </li>
                 <li className="flex justify-between pb-1">
                   <span className="font-semibold text-white">RERA No. PRM/KA/RERA/1251/446/PR/250925/008120</span>
@@ -239,7 +239,6 @@ export default function BrochureForm({ onAddLead, preselectedUnit }: BrochureFor
                           className="w-full bg-gray-50 border border-gray-200 text-xs sm:text-sm font-body px-3.5 py-2.5 rounded outline-none focus:border-navy-primary"
                         >
                           <option value="">Select Configuration</option>
-                          <option value="Premium 2 BHK">Premium 2 BHK (1,250 Sq.Ft)</option>
                           <option value="Luxury 3 BHK">Luxury 3 BHK (1,680 Sq.Ft)</option>
                           <option value="Both Layouts">Inquire About Both</option>
                         </select>

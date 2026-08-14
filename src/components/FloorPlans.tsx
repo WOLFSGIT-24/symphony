@@ -14,7 +14,7 @@ export default function FloorPlans({ onSelectUnit }: FloorPlansProps) {
   const filteredPlans = floorPlansData.filter((plan) => plan.id === activeTab);
 
   return (
-    <section id="floor-plans" className="w-full py-28 bg-white scroll-mt-20">
+    <section id="floor-plans" className="w-full pt-10 pb-16 md:py-28 bg-white scroll-mt-20">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Editorial Header */}
@@ -79,32 +79,39 @@ export default function FloorPlans({ onSelectUnit }: FloorPlansProps) {
 
                   {/* Structured details parameters */}
                   <div className="mt-6 md:mt-8">
-                    <span className="text-[9px] font-extrabold text-navy-primary uppercase tracking-[0.2em] block mb-3">
+                    <span className="text-[10px] font-extrabold text-navy-primary uppercase tracking-[0.2em] block mb-3">
                       Layout Highlights:
                     </span>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-3">
-                      {plan.highlights.map((highlight, hIdx) => (
-                        <div key={hIdx} className="flex gap-2 items-start text-xs text-gray-text font-body">
-                          <CheckCircle2 className="h-4 w-4 text-bronze mt-0.5 shrink-0" />
-                          <span>{highlight}</span>
-                        </div>
-                      ))}
+                      {plan.highlights.slice(0, 8).map((highlight, hIdx) => {
+                        const match = highlight.match(/^(\d+)\.\s*(.*)$/);
+                        const num = match ? match[1] : (hIdx + 1).toString();
+                        const text = match ? match[2] : highlight;
+                        return (
+                          <div key={hIdx} className="flex gap-2.5 items-center text-sm text-gray-text font-body py-0.5">
+                            <div className="w-5.5 h-5.5 rounded-full border border-navy-primary/30 flex items-center justify-center text-[10px] font-bold text-navy-primary shrink-0">
+                              {num}
+                            </div>
+                            <span className="leading-tight">{text}</span>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
 
                 {/* Inquire specifically about this unit */}
-                <button
+                {/* <button
                   onClick={() => onSelectUnit(plan.type)}
                   className="w-full flex items-center justify-center gap-2 bg-transparent border border-navy-primary text-navy-primary font-body text-xs font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-navy-primary hover:text-white transition-colors rounded-sm mt-8"
                 >
                   Inquire About Layout
                   <ArrowRight className="h-3.5 w-3.5" />
-                </button>
+                </button> */}
               </div>
 
               {/* Right Side: Interactive blueprint visual preview */}
-              <div className="w-full md:w-7/12 aspect-square md:aspect-auto relative p-4 sm:p-6 bg-white rounded-lg border border-navy-primary/5 flex items-center justify-center overflow-hidden min-h-[300px]">
+              <div className="w-full md:w-7/12 aspect-[4/3] relative p-4 sm:p-6 bg-white rounded-lg border border-navy-primary/5 flex items-center justify-center overflow-hidden">
                 {/* Magnifier glass button overlay */}
                 <div className="absolute inset-0 bg-navy-dark/45 opacity-0 group-hover:opacity-100 transition-all duration-500 z-10 flex items-center justify-center gap-2">
                   <button
@@ -120,7 +127,7 @@ export default function FloorPlans({ onSelectUnit }: FloorPlansProps) {
                   src={plan.imageUrl}
                   alt={plan.title}
                   referrerPolicy="no-referrer"
-                  className="max-w-full max-h-full object-contain transform group-hover:scale-[1.03] transition-transform duration-700"
+                  className="w-full h-full object-contain transform group-hover:scale-[1.03] transition-transform duration-700"
                 />
               </div>
 

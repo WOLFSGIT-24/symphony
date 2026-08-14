@@ -23,7 +23,7 @@ export default function BookingModal({
     phone: "",
     preferredDate: "",
     preferredTime: "11:00",
-    unitType: initialUnitType || "Premium 2 BHK",
+    unitType: initialUnitType || "Luxury 3 BHK",
     notes: "",
   });
 
@@ -222,7 +222,6 @@ export default function BookingModal({
                 </label>
                 <div className="flex gap-3">
                   {[
-                    { id: "Premium 2 BHK", label: "2 BHK Layout" },
                     { id: "Luxury 3 BHK", label: "3 BHK Layout" },
                   ].map((option) => (
                     <button
