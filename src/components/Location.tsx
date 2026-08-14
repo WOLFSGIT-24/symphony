@@ -5,7 +5,11 @@ import { CommuteDestination } from "../types";
 
 type CommuteMode = "driving" | "transit" | "walking";
 
-export default function Location() {
+interface LocationProps {
+  onOpenEnquiry: () => void;
+}
+
+export default function Location({ onOpenEnquiry }: LocationProps) {
 
   const renderMap = () => (
     <iframe
@@ -90,23 +94,14 @@ export default function Location() {
             {/* CTA Button */}
             <div className="pt-2">
               <button 
-                onClick={() => {
-                  const target = document.getElementById("lead-capture-section");
-                  if (target) target.scrollIntoView({ behavior: "smooth" });
-                }}
+                onClick={onOpenEnquiry}
                 className="bg-navy-dark text-white font-body text-xs font-bold tracking-widest uppercase px-8 py-4.5 hover:bg-navy-primary transition-colors shadow-lg rounded-sm"
               >
                 Explore Location Advantages
               </button>
             </div>
 
-            {/* Neighborhood quick fact */}
-            <div className="flex gap-3 p-4 bg-gold/10 border border-gold/25 rounded-lg text-xs text-navy-primary/90 font-body">
-              <Info className="h-5 w-5 text-bronze shrink-0 mt-0.5" />
-              <p>
-                <strong>Hennur Outer Ring Road:</strong> Upcoming Phase 3 Metro corridor is located within 500 meters of Symphony Heights, guaranteeing significant property capital appreciation.
-              </p>
-            </div>
+
           </div>
 
           {/* Desktop Only Google Map */}

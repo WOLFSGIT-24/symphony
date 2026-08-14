@@ -90,7 +90,7 @@ export default function App() {
   };
 
   const handleRequestDownload = () => {
-    setDownloadModalOpen(true);
+    setOfferOpen(true);
   };
 
   const handleUpdateStatus = (id: string, status: LeadSubmission["status"]) => {
@@ -109,18 +109,11 @@ export default function App() {
 
   const handleSelectUnitType = (unitType: string) => {
     setPreselectedUnit(unitType);
-    const target = document.getElementById("lead-capture-section");
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
+    setOfferOpen(true);
   };
 
   const handleHeroEnquiry = () => {
-    // Scrolls to lead capture form directly
-    const target = document.getElementById("lead-capture-section");
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
+    setOfferOpen(true);
   };
 
   return (
@@ -129,8 +122,7 @@ export default function App() {
       <Header
         onOpenBooking={() => {
           setPreselectedUnit(null);
-          const target = document.getElementById("lead-capture-section");
-          if (target) target.scrollIntoView({ behavior: "smooth" });
+          setOfferOpen(true);
         }}
         onToggleAdmin={() => setAdminOpen(!adminOpen)}
         isAdminActive={adminOpen}
@@ -154,15 +146,14 @@ export default function App() {
       <FloorPlans 
         onSelectUnit={handleSelectUnitType} 
         isUnlocked={floorPlansUnlocked}
-        onUnlockRequest={() => setBookingOpen(true)}
+        onUnlockRequest={() => setOfferOpen(true)}
       />
-
-      {/* Location Connectivity Grid */}
-      <Location />
-
 
       {/* Gallery Section */}
       <Gallery />
+
+      {/* Location Connectivity Grid */}
+      <Location onOpenEnquiry={handleHeroEnquiry} />
 
       {/* Brochure / Intake Form Section */}
       <BrochureForm 
@@ -210,8 +201,7 @@ export default function App() {
         <button 
           onClick={() => {
             setPreselectedUnit(null);
-            const target = document.getElementById("lead-capture-section");
-            if (target) target.scrollIntoView({ behavior: "smooth" });
+            setOfferOpen(true);
           }}
           className="flex-1 flex items-center justify-center bg-navy-primary text-white font-body text-[13px] font-extrabold uppercase tracking-[0.15em] py-4 transition-colors hover:bg-navy-dark"
         >

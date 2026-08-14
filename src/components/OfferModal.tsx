@@ -102,12 +102,6 @@ export default function OfferModal({ isOpen, onClose, onAddLead }: OfferModalPro
               <h2 className="font-display text-[26px] font-bold text-navy-primary leading-[1.2] mb-3 pr-6 uppercase">
                 Flexi Payment<br />Plan
               </h2>
-              <div className="font-body text-xs font-bold text-bronze uppercase tracking-wider mb-1">
-                NEVER BEFORE. NEVER AGAIN.
-              </div>
-              <p className="font-body text-sm text-[#333] font-medium leading-relaxed">
-                Pay 25% now and nothing for the next one year.
-              </p>
             </div>
 
             {/* Form Fields */}
